@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-interface HeaderProps {
+interface HeaderProps {}
 
-}
-
-export const Header: React.FC<HeaderProps> = ({}) => {
-    return (<header>
+export const Header: React.FC<HeaderProps> = () => {
+  return (
+    <header>
       <h1>HiveMind</h1>
-    </header>);
-}
+    </header>
+  );
+};

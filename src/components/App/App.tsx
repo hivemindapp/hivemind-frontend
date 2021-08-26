@@ -1,12 +1,8 @@
-import React from 'react'
-import {Header} from '../Header/Header'
+import React from 'react';
+import { Header } from '../Header/Header';
 
-interface AppProps {
-
-}
+interface AppProps {}
 
 export const App: React.FC<AppProps> = ({}) => {
-    return (
-      <Header />
-    );
-}
+  return <Header />;
+};

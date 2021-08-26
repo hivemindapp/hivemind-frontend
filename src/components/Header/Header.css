@@ -1,0 +1,20 @@
+header {
+  background-color: #FBCA00;  
+  height: 7em;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+    height: 5em;
+    width: 5em;
+    margin-left: 2em;
+}
+
+h1 {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    padding-left: .25em;
+    font-size: 300%;
+}

@@ -1,0 +1,12 @@
+{
+  "data": {
+    "type": "user",
+    "id": 1,
+    "attributes": {
+      "username": "BeeKeeper1",
+      "region": "NorthEast",
+      "biography": "Hobby beekeeper for 5 years, 2 hives",
+      "avatar": "https://tinyurl.com/p67sndvb"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "type": "post",
+      "id": 1,
+      "attributes": {
+        "user_id": 1,
+        "username": "BeeKeeper1",
+        "title": "New research on waxworms",
+        "description": "Colony collapse disorder of honey bees, Apis mellifera L., is a global problem with no conclusive cause yet accepted. A previous U.S. Army study identified a DNA virus, invertebrate iridescent virus (IIV-6), and two microsporian pathogens, Nosema apis Zander 1909 and Nosema ceranae Fries et al. 1996, in bee samples from a collapsing hive. A PCR-based study using limited samples failed to confirm IIV-6 in collapsing colonies, causing the finding to be questioned. Here we demonstrate that honey bees are very susceptible to the virus. We observed viral inclusion bodies in the cytoplasm of honey bee brood previously inoculated with IIV-6. Electron microscopy revealed massive numbers of viral particles in cells at 3 days post-inoculation. Viral factories and paracrystalline arrays of particles ~125 nm in diameter were observed. Few cells were spared infection, indicating that honey bee larvae are very susceptible to IIV-6 and most tissues are infected.",
+        "photo": "https://tinyurl.com/wvjmwx5u",
+        "created_at": "2021-08-26 14:28:22 -0600",
+        "upvotes": 5,
+        "downvotes": 1
+      }
+    },
+    {
+      "type": "post",
+      "id": 2,
+      "attributes": {
+        "user_id": 1,
+        "username": "BeeKeeper1",
+        "title": "Happy bees",
+        "description": "Look how happy they are!!",
+        "photo": "https://tinyurl.com/67pxcej5",
+        "created_at": "2021-08-25 12:28:22 -0600",
+        "upvotes": 4,
+        "downvotes": 2
+      }
+    },
+    {
+      "type": "post",
+      "id": 3,
+      "attributes": {
+        "user_id": 2,
+        "username": "BeeNoob2",
+        "title": "HELP!",
+        "description": "My bees are swarming, what do I do?",
+        "photo": "https://tinyurl.com/977mwcuy",
+        "created_at": "2021-08-20 18:28:22 -0600",
+        "upvotes": 1,
+        "downvotes": 3
+      }
+    }
+  ]
+}

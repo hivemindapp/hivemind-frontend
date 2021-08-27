@@ -1,22 +1,12 @@
-import React from "react";
-import "./Cards.css";
+import React from 'react';
+import './Cards.css';
+import { Posts } from '../App/App';
 
 interface CardsProps {
-  posts: {
-    id: number;
-    attributes: {
-      user_id: number;
-      username: string;
-      title: string;
-      description: string;
-      photo: string;
-      created_at: string;
-      upvotes: number;
-      downvotes: number;
-    };
-  }[];
+  posts: Posts | {};
 }
 
 export const Cards: React.FC<CardsProps> = ({ posts }) => {
+  console.log(posts);
   return <div></div>;
 };

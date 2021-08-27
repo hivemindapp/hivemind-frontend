@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { Header } from "../Header/Header";
-import mockPosts from "../../mockdata/mockPosts.json";
-import { Cards } from "../Cards/Cards";
+import React, { useState, useEffect } from 'react';
+import { Header } from '../Header/Header';
+import mockPosts from '../../mockdata/mockPosts.json';
+import { Cards } from '../Cards/Cards';
 
-interface AppProps {
-  posts: {
-    id: number;
-    attributes: {
-      user_id: number;
-      username: string;
-      title: string;
-      description: string;
-      photo: string;
-      created_at: string;
-      upvotes: number;
-      downvotes: number;
-    };
-  }[];
+export interface Post {
+  type: string;
+  id: number;
+  attributes: {
+    user_id: number;
+    username: string;
+    title: string;
+    description: string;
+    photo: string;
+    created_at: string;
+    upvotes: number;
+    downvotes: number;
+  };
 }
 
-export const App: React.FC<AppProps> = () => {
-  const [posts, setPosts] = useState<AppProps["posts"] | {}>({});
+export interface Posts {
+  posts: Post[];
+}
+
+export const App: React.FC = () => {
+  const [posts, setPosts] = useState<Posts | {}>({});
 
   useEffect(() => {
     setPosts(mockPosts.data);
@@ -29,7 +32,7 @@ export const App: React.FC<AppProps> = () => {
   return (
     <main>
       <Header />
-      <Cards posts={posts} />
+      {Object.keys(posts).length && <Cards posts={posts} />}
     </main>
   );
 };

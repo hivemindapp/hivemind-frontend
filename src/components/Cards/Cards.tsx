@@ -1,12 +1,18 @@
 import React from 'react';
 import './Cards.css';
-import { Posts } from '../App/App';
-
+import { Post, Posts } from '../App/App';
+import { Card } from '../Card/Card';
 interface CardsProps {
   posts: Posts | {};
 }
 
 export const Cards: React.FC<CardsProps> = ({ posts }) => {
-  console.log(posts);
-  return <div></div>;
+  const makeCards = (posts: any) => {
+    return posts.map((post: Post) => {
+      console.log(post, 'jhi');
+      return <Card key={post.id} post={post} />;
+    });
+  };
+
+  return <article>{makeCards(posts)}</article>;
 };

@@ -20,7 +20,7 @@ interface AppProps {
 }
 
 export const App: React.FC<AppProps> = () => {
-  const [posts, setPosts] = useState<AppProps["posts"]>({});
+  const [posts, setPosts] = useState<AppProps["posts"] | {}>({});
 
   useEffect(() => {
     setPosts(mockPosts.data);

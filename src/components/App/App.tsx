@@ -19,12 +19,9 @@ export interface User {
   id: number;
   username: string;
 }
-export interface Posts {
-  posts: Post[];
-}
 
 export const App: React.FC = () => {
-  const [posts, setPosts] = useState<Posts | {}>({});
+  const [posts, setPosts] = useState<Post[] | []>([]);
 
   useEffect(() => {
     setPosts(mockPosts.data);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import mockPosts from '../../mockdata/mockPosts.json';
 import { Cards } from '../Cards/Cards';
@@ -32,8 +33,28 @@ export const App: React.FC = () => {
   return (
     <main>
       <Header />
-      {Object.keys(posts).length && <Cards posts={posts} />}
-      {!Object.keys(posts).length && <h2>No posts yet...</h2>}
+      <Switch>
+        <Route
+          exact
+          path='/'
+          render={() => (
+            <>
+              {Object.keys(posts).length && <Cards posts={posts} />}
+              {!Object.keys(posts).length && <h2>No posts yet...</h2>}
+            </>
+          )}
+        />
+        <Route
+          render={() => (
+            <>
+              <h2>
+                Sorry, that page doesn't exist, would you like to go home?
+              </h2>
+              <NavLink to='/'>Home</NavLink>
+            </>
+          )}
+        />
+      </Switch>
     </main>
   );
 };

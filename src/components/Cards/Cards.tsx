@@ -14,5 +14,10 @@ export const Cards: React.FC<CardsProps> = ({ posts }) => {
     });
   };
 
-  return <section className='cards-container'>{makeCards(posts)}</section>;
+  return (
+    <section className='cards-container'>
+      {!!Object.keys(posts).length && makeCards(posts)}
+      {!Object.keys(posts).length && <h2>No posts yet...</h2>}
+    </section>
+  );
 };

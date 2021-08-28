@@ -7,6 +7,7 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ post }) => {
+  console.log(post);
   return (
     <button className='card'>
       <img src={post.image} alt={`${post.title}`} />

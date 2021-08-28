@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Switch, NavLink } from 'react-router-dom';
-import { Header } from '../Header/Header';
-import mockPosts from '../../mockdata/mockPosts.json';
-import { Cards } from '../Cards/Cards';
+import React, { useState, useEffect } from "react";
+import { Route, Switch, NavLink } from "react-router-dom";
+import { Header } from "../Header/Header";
+import mockPosts from "../../mockdata/mockPosts.json";
+import { Cards } from "../Cards/Cards";
+import { Modal } from "../Modal/Modal";
 
 export interface Post {
   id: number;
@@ -33,11 +34,12 @@ export const App: React.FC = () => {
       <Switch>
         <Route
           exact
-          path='/'
+          path="/"
           render={() => (
             <>
-              <button>Add a post...</button>
+              <button onClick=  >Add a post...</button>
               <Cards posts={posts} />
+              <Modal />
             </>
           )}
         />
@@ -47,7 +49,7 @@ export const App: React.FC = () => {
               <h2>
                 Sorry, that page doesn't exist, would you like to go home?
               </h2>
-              <NavLink to='/'>Home</NavLink>
+              <NavLink to="/">Home</NavLink>
             </>
           )}
         />

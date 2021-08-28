@@ -27,7 +27,6 @@ export const App: React.FC = () => {
   const [posts, setPosts] = useState<Posts | {}>({});
 
   useEffect(() => {
-    console.log('mock', mockPosts.data);
     setPosts(mockPosts.data);
   }, []);
 

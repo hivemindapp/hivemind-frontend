@@ -5,20 +5,20 @@ import mockPosts from '../../mockdata/mockPosts.json';
 import { Cards } from '../Cards/Cards';
 
 export interface Post {
-  type: string;
   id: number;
-  attributes: {
-    user_id: number;
-    username: string;
-    title: string;
-    description: string;
-    photo: string;
-    created_at: string;
-    upvotes: number;
-    downvotes: number;
-  };
+  title: string;
+  description: string;
+  image: string;
+  user: User;
+  upvotes: number;
+  downvotes: number;
+  created_at: string;
 }
 
+export interface User {
+  id: number;
+  username: string;
+}
 export interface Posts {
   posts: Post[];
 }

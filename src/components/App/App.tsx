@@ -33,6 +33,7 @@ export const App: React.FC = () => {
     <main>
       <Header />
       {Object.keys(posts).length && <Cards posts={posts} />}
+      {!Object.keys(posts).length && <h2>No posts yet...</h2>}
     </main>
   );
 };

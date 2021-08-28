@@ -39,7 +39,7 @@ export const App: React.FC = () => {
           path='/'
           render={() => (
             <>
-              {Object.keys(posts).length && <Cards posts={posts} />}
+              {!!Object.keys(posts).length && <Cards posts={posts} />}
               {!Object.keys(posts).length && <h2>No posts yet...</h2>}
             </>
           )}

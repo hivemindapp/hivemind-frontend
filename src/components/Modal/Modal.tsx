@@ -3,7 +3,7 @@ import "./Modal.css";
 
 interface ModalProps {}
 
-export const Modal: React.FC<ModalProps> = ({}) => {
+export const Modal: React.FC<ModalProps> = () => {
   return (
     <div className="modal">
       <label>Create Post</label>

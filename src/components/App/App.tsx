@@ -23,6 +23,7 @@ export interface User {
 
 export const App: React.FC = () => {
   const [posts, setPosts] = useState<Post[] | []>([]);
+  const [modal, toggleModal] = useState<boolean>(false);
 
   useEffect(() => {
     setPosts(mockPosts.data);
@@ -37,9 +38,9 @@ export const App: React.FC = () => {
           path="/"
           render={() => (
             <>
-              <button onClick=  >Add a post...</button>
+              <button onClick={() => toggleModal(!modal)}>Add a post!</button>
               <Cards posts={posts} />
-              <Modal />
+              {modal && <Modal />}
             </>
           )}
         />

@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import "./Modal.css";
-import ImageUploading from "react-images-uploading";
+import ImageUploading, { ImageListType } from "react-images-uploading";
+import { Post } from "../App/App";
 // import { idText } from "typescript";
 
 interface ModalProps {
-  submitPost(newPost: object): any;
+  submitPost: (newPost: Post) => void;
+  closeModal: (event: any) => void;
 }
 
-export const Modal: React.FC<ModalProps> = ({ submitPost }) => {
+export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
   const [images, setImages] = useState([]);
   const [postTitle, setTitle] = useState<string>("");
   const [postDescription, setDescription] = useState<string>("");
 
   const maxNumber = 2;
-  const onChange = (imageList: any, addUpdateIndex: any) => {
-    setImages(imageList);
+  const onChange = (
+    imageList: ImageListType,
+    addUpdateIndex: number[] | undefined
+  ) => {
+    setImages(imageList as never[]);
   };
 
   const clearState = () => {
@@ -23,20 +28,29 @@ export const Modal: React.FC<ModalProps> = ({ submitPost }) => {
     setDescription("");
   };
 
-  const addPost = (event: any) => {
+  const addPost = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     const newPost = {
+      id: 2,
       title: postTitle,
       description: postDescription,
-      image: images,
+      // image: images,
+      user: { id: 4, username: "workerBee1" },
+      upvotes: 0,
+      downvotes: 0,
+      created_at: "August 29, 2021",
     };
     submitPost(newPost);
     clearState();
   };
 
   return (
-    <div className="modal-wrapper">
-      <section className="modal-content">
+    <section
+      className="modal-wrapper"
+      onClick={(event) => closeModal(event)}
+      id="modalWrapper"
+    >
+      <section className="modal-content" id="modalContent">
         <i className="fas fa-times"></i>
         <label>Create Post</label>
         <input
@@ -93,9 +107,9 @@ export const Modal: React.FC<ModalProps> = ({ submitPost }) => {
         <input
           type="submit"
           className="post-submit-btn"
-          onClick={(event) => addPost(event)}
+          onClick={(event: React.MouseEvent<HTMLElement>) => addPost(event)}
         ></input>
       </section>
-    </div>
+    </section>
   );
 };

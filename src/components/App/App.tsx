@@ -9,7 +9,7 @@ export interface Post {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image?: string;
   user: User;
   upvotes: number;
   downvotes: number;
@@ -29,9 +29,17 @@ export const App: React.FC = () => {
     setPosts(mockPosts.data);
   }, []);
 
-  const submitPost = (newPost: object) => {
+  const submitPost = (newPost: Post) => {
     // setPosts(...posts, newPost);
+    toggleModal(false);
     console.log("add button working");
+  };
+
+  const closeModal = (event: any) => {
+    if (event.target.closest("section").id === "modalContent") {
+      return;
+    }
+    toggleModal(false);
   };
 
   return (
@@ -45,7 +53,9 @@ export const App: React.FC = () => {
             <>
               <button onClick={() => toggleModal(!modal)}>Add a post!</button>
               <Cards posts={posts} />
-              {modal && <Modal submitPost={submitPost} />}
+              {modal && (
+                <Modal submitPost={submitPost} closeModal={closeModal} />
+              )}
             </>
           )}
         />

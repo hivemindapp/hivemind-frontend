@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import ImageUploading from "react-images-uploading";
-import { idText } from "typescript";
+// import { idText } from "typescript";
 
-interface ModalProps {}
+interface ModalProps {
+  submitPost(newPost: object): any;
+}
 
 export const Modal: React.FC<ModalProps> = ({ submitPost }) => {
   const [images, setImages] = useState([]);
@@ -91,7 +93,7 @@ export const Modal: React.FC<ModalProps> = ({ submitPost }) => {
         <input
           type="submit"
           className="post-submit-btn"
-          onClick={() => addPost()}
+          onClick={(event) => addPost(event)}
         ></input>
       </section>
     </div>

@@ -4,7 +4,7 @@ import { GET_ALL_POSTS } from '../../utils/apiCalls';
 import { Post } from '../App/App';
 import { Card } from '../Card/Card';
 import './Cards.css';
-import mockData from '../../mockdata/mockPosts.json';
+// import mockData from '../../mockdata/mockPosts.json';
 
 interface CardsProps {}
 
@@ -12,15 +12,15 @@ export const Cards: React.FC<CardsProps> = () => {
   const [posts, setPosts] = useState<any>([]);
   const { loading, error, data } = useQuery(GET_ALL_POSTS);
 
-  // useEffect(() => {
-  //   if (!loading && data) {
-  //     setPosts(data.posts);
-  //   }
-  // }, [data, loading]);
-
   useEffect(() => {
-    setPosts(mockData.posts);
-  }, []);
+    if (!loading && data) {
+      setPosts(data.posts);
+    }
+  }, [data, loading]);
+
+  // useEffect(() => {
+  //   setPosts(mockData.posts);
+  // }, []);
 
   const makeCards = (posts: Post[]) => {
     return posts.map((post: Post) => {

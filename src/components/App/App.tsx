@@ -29,6 +29,11 @@ export const App: React.FC = () => {
     setPosts(mockPosts.data);
   }, []);
 
+  const submitPost = (newPost: object) => {
+    // setPosts(...posts, newPost);
+    console.log("add button working");
+  };
+
   return (
     <main>
       <Header />
@@ -40,7 +45,7 @@ export const App: React.FC = () => {
             <>
               <button onClick={() => toggleModal(!modal)}>Add a post!</button>
               <Cards posts={posts} />
-              {modal && <Modal />}
+              {modal && <Modal submitPost={submitPost} />}
             </>
           )}
         />

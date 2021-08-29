@@ -27,7 +27,8 @@ export const Cards: React.FC<CardsProps> = () => {
     <section className='cards-container'>
       {loading && <p>Loading...</p>}
       {error && <p>Error:</p>}
-      {posts.length && makeCards(posts)}
+      {!!posts.length && makeCards(posts)}
+      {!loading && !posts.length && <p>No posts yet...</p>}
     </section>
   );
 };

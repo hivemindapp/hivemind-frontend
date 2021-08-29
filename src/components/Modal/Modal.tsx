@@ -13,6 +13,7 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
   const [images, setImages] = useState([]);
   const [postTitle, setTitle] = useState<string>("");
   const [postDescription, setDescription] = useState<string>("");
+  const [imageURLS, setImageURLS] = useState<string[]>([]);
 
   const maxNumber = 2;
   const onChange = (
@@ -20,6 +21,8 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
     addUpdateIndex: number[] | undefined
   ) => {
     setImages(imageList as never[]);
+    let onlyURLs = imageList.map((image) => image.data_url);
+    setImageURLS(onlyURLs);
   };
 
   const clearState = () => {
@@ -34,7 +37,7 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
       id: 2,
       title: postTitle,
       description: postDescription,
-      // image: images,
+      image: imageURLS,
       user: { id: 4, username: "workerBee1" },
       upvotes: 0,
       downvotes: 0,

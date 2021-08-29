@@ -9,7 +9,7 @@ export interface Post {
   id: number;
   title: string;
   description: string;
-  image?: string;
+  image?: string[];
   user: User;
   upvotes: number;
   downvotes: number;
@@ -33,7 +33,6 @@ export const App: React.FC = () => {
     let allPosts: Post[] = [...posts, newPost];
     setPosts(allPosts);
     toggleModal(false);
-    console.log("add button working");
   };
 
   const closeModal = (event: any) => {

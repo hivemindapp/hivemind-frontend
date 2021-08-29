@@ -30,7 +30,8 @@ export const App: React.FC = () => {
   }, []);
 
   const submitPost = (newPost: Post) => {
-    // setPosts(...posts, newPost);
+    let allPosts: Post[] = [...posts, newPost];
+    setPosts(allPosts);
     toggleModal(false);
     console.log("add button working");
   };

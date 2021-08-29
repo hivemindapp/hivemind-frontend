@@ -50,6 +50,7 @@ export const App: React.FC = () => {
   return (
     <main>
       <Header />
+
       <Switch>
         <Route
           exact
@@ -64,6 +65,7 @@ export const App: React.FC = () => {
             </>
           )}
         />
+
         <Route
           render={() => (
             <>

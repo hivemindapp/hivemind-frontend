@@ -3,6 +3,8 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
+// import { useQuery } from '@apollo/client';
+// import { GET_ALL_POSTS } from '../../index';
 import mockPosts from '../../mockdata/mockPosts.json';
 
 export interface Post {
@@ -27,13 +29,20 @@ export interface User {
 export const App: React.FC = () => {
   const [posts, setPosts] = useState<Post[] | []>([]);
   const [modal, toggleModal] = useState<boolean>(false);
+  // const { loading, error, data } = useQuery(GET_ALL_POSTS);
+
+  // useEffect(() => {
+  //   if (!loading && data) {
+  //     setPosts(data.posts);
+  //   }
+  // }, [data, loading]);
 
   useEffect(() => {
     setPosts(mockPosts.posts);
   }, []);
 
   const submitPost = (newPost: Post) => {
-    let allPosts: Post[] = [...posts, newPost];
+    let allPosts: Post[] = [newPost, ...posts];
     setPosts(allPosts);
     toggleModal(false);
   };
@@ -59,7 +68,7 @@ export const App: React.FC = () => {
           render={() => (
             <>
               <button onClick={() => toggleModal(!modal)}>Add a post!</button>
-              <Cards />
+              <Cards posts={posts} />
               {modal && (
                 <Modal submitPost={submitPost} closeModal={closeModal} />
               )}

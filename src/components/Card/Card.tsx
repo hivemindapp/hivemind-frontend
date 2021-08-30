@@ -37,10 +37,14 @@ export const Card: React.FC<CardProps> = ({ post }) => {
         </p>
       </div>
       <div className='preview-container'>
-        {post.image && (
-          <img className='post-img' src={post.image[0]} alt={`${post.title}`} />
+        {!!post.image!.length && (
+          <img
+            className='post-img'
+            src={post.image![0]}
+            alt={`${post.title}`}
+          />
         )}
-        {!post.image && <p>{post.description}</p>}
+        {!post.image!.length && <p>{post.description}</p>}
       </div>
     </button>
   );

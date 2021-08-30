@@ -35,7 +35,7 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
     event.preventDefault();
     const newPost = {
       __typename: 'post',
-      id: '2',
+      id: Date.now().toString(),
       title: postTitle,
       description: postDescription,
       image: imageURLS,

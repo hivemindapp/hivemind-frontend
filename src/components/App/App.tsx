@@ -5,7 +5,7 @@ import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
 // import { useQuery } from '@apollo/client';
 // import { GET_ALL_POSTS } from '../../index';
-import mockPosts from '../../mockdata/mockPosts.json';
+// import mockPosts from '../../mockdata/mockPosts.json';
 
 export interface Post {
   __typename: string;
@@ -13,7 +13,7 @@ export interface Post {
   id: string;
   title: string;
   description: string;
-  image?: string[];
+  image?: string;
   user: User;
   upvotes?: number;
   downvotes?: number;
@@ -27,25 +27,18 @@ export interface User {
 }
 
 export const App: React.FC = () => {
-  const [posts, setPosts] = useState<Post[] | []>([]);
   const [modal, toggleModal] = useState<boolean>(false);
   // const { loading, error, data } = useQuery(GET_ALL_POSTS);
 
   // useEffect(() => {
-  //   if (!loading && data) {
-  //     setPosts(data.posts);
-  //   }
-  // }, [data, loading]);
+  //   setPosts(mockPosts.posts);
+  // }, []);
 
-  useEffect(() => {
-    setPosts(mockPosts.posts);
-  }, []);
-
-  const submitPost = (newPost: Post) => {
-    let allPosts: Post[] = [newPost, ...posts];
-    setPosts(allPosts);
-    toggleModal(false);
-  };
+  // const submitPost = (newPost: Post) => {
+  //   let allPosts: Post[] = [newPost, ...posts];
+  //   setPosts(allPosts);
+  //   toggleModal(false);
+  // };
 
   const closeModal = (event: any) => {
     if (event.target.id === 'x') {
@@ -68,10 +61,8 @@ export const App: React.FC = () => {
           render={() => (
             <>
               <button onClick={() => toggleModal(!modal)}>Add a post!</button>
-              <Cards posts={posts} />
-              {modal && (
-                <Modal submitPost={submitPost} closeModal={closeModal} />
-              )}
+              <Cards />
+              {modal && <Modal closeModal={closeModal} />}
             </>
           )}
         />

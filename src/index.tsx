@@ -11,8 +11,7 @@ import {
 } from '@apollo/client';
 
 const client = new ApolloClient({
-  // this is the production uri, we need to change to staging:
-  uri: 'https://hivemind-backend.herokuapp.com/graphql',
+  uri: 'https://hivemind-staging-branch.herokuapp.com/graphql',
   cache: new InMemoryCache()
 });
 
@@ -44,3 +43,6 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('root')
 );
+
+// this is the production uri, we need to change to staging:
+// uri: 'https://hivemind-backend.herokuapp.com/graphql',

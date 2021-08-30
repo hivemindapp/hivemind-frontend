@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
-import './Modal.css';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
-import { Post } from '../App/App';
-// import { idText } from "typescript";
+import { gql, useMutation } from '@apollo/client';
+import './Modal.css';
+
+const ADD_POST = gql`
+  mutation createPost($input: CreatePostInput!) {
+    createPost(input: $input) {
+      id
+      title
+      description
+      image
+      upvotes
+      downvotes
+      createdAt
+      updatedAt
+      user {
+        id
+        username
+        avatar
+      }
+    }
+  }
+`;
 
 interface ModalProps {
-  submitPost: (newPost: Post) => void;
   closeModal: (event: any) => void;
 }
 
-export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
+export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [images, setImages] = useState([]);
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
-  const [imageURLS, setImageURLS] = useState<string[]>([]);
+  const [imageURLS, setImageURLS] = useState<string>('');
+  const [createPost, { data, loading, error }] = useMutation(ADD_POST);
 
   const maxNumber = 2;
   const onChange = (
@@ -22,7 +41,7 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
   ) => {
     setImages(imageList as never[]);
     let onlyURLs = imageList.map(image => image.data_url);
-    setImageURLS(onlyURLs);
+    setImageURLS(onlyURLs[0].toString());
   };
 
   const clearState = () => {
@@ -33,24 +52,18 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
 
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    const newPost = {
-      __typename: 'post',
-      id: Date.now().toString(),
-      title: postTitle,
-      description: postDescription,
-      image: imageURLS,
-      user: {
-        __typename: 'user',
-        id: 4,
-        username: 'workerBee1',
-        avatar:
-          'https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg'
-      },
-      upvotes: 0,
-      downvotes: 0,
-      createdAt: 'August 29, 2021'
-    };
-    submitPost(newPost);
+
+    createPost({
+      variables: {
+        input: {
+          title: postTitle,
+          description: postDescription,
+          image: imageURLS,
+          userId: 14
+        }
+      }
+    });
+
     clearState();
   };
 

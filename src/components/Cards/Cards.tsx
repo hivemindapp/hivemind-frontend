@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_ALL_POSTS } from '../../index';
+import { GET_ALL_POSTS } from '../../utils/apiCalls';
 import { Post } from '../App/App';
 import { Card } from '../Card/Card';
 import './Cards.css';

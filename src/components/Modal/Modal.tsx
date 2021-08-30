@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import "./Modal.css";
-import ImageUploading, { ImageListType } from "react-images-uploading";
-import { Post } from "../App/App";
+import React, { useState } from 'react';
+import './Modal.css';
+import ImageUploading, { ImageListType } from 'react-images-uploading';
+import { Post } from '../App/App';
 // import { idText } from "typescript";
 
 interface ModalProps {
@@ -11,8 +11,8 @@ interface ModalProps {
 
 export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
   const [images, setImages] = useState([]);
-  const [postTitle, setTitle] = useState<string>("");
-  const [postDescription, setDescription] = useState<string>("");
+  const [postTitle, setTitle] = useState<string>('');
+  const [postDescription, setDescription] = useState<string>('');
   const [imageURLS, setImageURLS] = useState<string[]>([]);
 
   const maxNumber = 2;
@@ -27,8 +27,8 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
 
   const clearState = () => {
     setImages([]);
-    setTitle("");
-    setDescription("");
+    setTitle('');
+    setDescription('');
   };
 
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
@@ -38,10 +38,10 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
       title: postTitle,
       description: postDescription,
       image: imageURLS,
-      user: { id: 4, username: "workerBee1" },
+      user: { id: 4, username: 'workerBee1' },
       upvotes: 0,
       downvotes: 0,
-      created_at: "August 29, 2021",
+      created_at: 'August 29, 2021',
     };
     submitPost(newPost);
     clearState();
@@ -50,11 +50,15 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
   return (
     <section
       className="modal-wrapper"
-      onClick={(event) => closeModal(event)}
+      onClick={(event: any) => closeModal(event)}
       id="modalWrapper"
     >
       <section className="modal-content" id="modalContent">
-        <i className="fas fa-times"></i>
+        <i
+          className="fas fa-times"
+          id="x"
+          onClick={(event: any) => closeModal(event)}
+        ></i>
         <label>Create Post</label>
         <input
           type="text"
@@ -87,7 +91,7 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
             // write your building UI
             <div className="upload__image-wrapper">
               <button
-                style={isDragging ? { color: "red" } : undefined}
+                style={isDragging ? { color: 'red' } : undefined}
                 onClick={onImageUpload}
                 {...dragProps}
               >
@@ -97,7 +101,7 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
               <button onClick={onImageRemoveAll}>Remove all images</button>
               {imageList.map((image, index) => (
                 <div key={index} className="image-item">
-                  <img src={image["data_url"]} alt="" width="100" />
+                  <img src={image['data_url']} alt="" width="100" />
                   <div className="image-item__btn-wrapper">
                     <button onClick={() => onImageUpdate(index)}>Update</button>
                     <button onClick={() => onImageRemove(index)}>Remove</button>

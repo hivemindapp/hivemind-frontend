@@ -14,10 +14,10 @@
 .modal-content {
   margin: auto;
   background-color: white;
-  padding: 2em;
+  padding: 4em;
   border: 0.25em solid black;
-  height: 35em;
-  width: 50em;
+  height: 70vw;
+  width: 70vw;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -26,8 +26,8 @@
 }
 
 .post-description {
-  width: 75%;
-  height: 70%;
+  width: 85vw;
+  height: 70vw;
   margin-top: 2em;
   margin-bottom: 2em;
 }

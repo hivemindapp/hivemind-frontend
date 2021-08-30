@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch, NavLink } from "react-router-dom";
-import { Header } from "../Header/Header";
-import mockPosts from "../../mockdata/mockPosts.json";
-import { Cards } from "../Cards/Cards";
-import { Modal } from "../Modal/Modal";
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, NavLink } from 'react-router-dom';
+import { Header } from '../Header/Header';
+import mockPosts from '../../mockdata/mockPosts.json';
+import { Cards } from '../Cards/Cards';
+import { Modal } from '../Modal/Modal';
 
 export interface Post {
   id: number;
@@ -36,9 +36,12 @@ export const App: React.FC = () => {
   };
 
   const closeModal = (event: any) => {
-    if (event.target.closest("section").id === "modalContent") {
+    if (event.target.id === 'x') {
+      toggleModal(false);
+    } else if (event.target.closest('section').id === 'modalContent') {
       return;
     }
+
     toggleModal(false);
   };
 

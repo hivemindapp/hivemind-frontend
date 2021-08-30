@@ -11,31 +11,49 @@
   text-align: center;
 }
 
+.close-modal {
+  color: black;
+  align-self: flex-start;
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
+.close-modal:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
 .modal-content {
   margin: auto;
   background-color: white;
   padding: 4em;
   border: 0.25em solid black;
-  height: 70vw;
-  width: 70vw;
+  height: 60vh;
+  width: 50vw;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
 .post-description {
-  width: 85vw;
-  height: 70vw;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  width: 100%;
+  padding: 1em;
+  text-align: start;
 }
 
 .post-submit-btn {
+  margin: 1em;
   cursor: pointer;
 }
 
 .post-submit-btn:hover {
   transform: scale(1.1);
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1200px) {
 }

@@ -4,7 +4,7 @@ import { Card } from '../Card/Card';
 import './Cards.css';
 
 interface CardsProps {
-  posts: Post[] | [];
+  posts: Post[];
 }
 
 export const Cards: React.FC<CardsProps> = ({ posts }) => {
@@ -16,8 +16,10 @@ export const Cards: React.FC<CardsProps> = ({ posts }) => {
 
   return (
     <section className='cards-container'>
+      {/* {loading && <p>Loading...</p>}
+      {error && <p>Error:</p>} */}
       {!!posts.length && makeCards(posts)}
-      {!posts.length && <h2>No posts yet...</h2>}
+      {/* {!loading && !posts.length && <p>No posts yet...</p>} */}
     </section>
   );
 };

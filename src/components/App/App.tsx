@@ -1,36 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { Header } from '../Header/Header';
-import mockPosts from '../../mockdata/mockPosts.json';
 import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
+// import { useQuery } from '@apollo/client';
+// import { GET_ALL_POSTS } from '../../index';
+import mockPosts from '../../mockdata/mockPosts.json';
 
 export interface Post {
-  id: number;
+  __typename: string;
+  createdAt: string;
+  id: string;
   title: string;
   description: string;
   image?: string[];
   user: User;
-  upvotes: number;
-  downvotes: number;
-  created_at: string;
+  upvotes?: number;
+  downvotes?: number;
 }
 
 export interface User {
+  __typename: string;
   id: number;
   username: string;
+  avatar: string;
 }
 
 export const App: React.FC = () => {
   const [posts, setPosts] = useState<Post[] | []>([]);
   const [modal, toggleModal] = useState<boolean>(false);
+  // const { loading, error, data } = useQuery(GET_ALL_POSTS);
+
+  // useEffect(() => {
+  //   if (!loading && data) {
+  //     setPosts(data.posts);
+  //   }
+  // }, [data, loading]);
 
   useEffect(() => {
-    setPosts(mockPosts.data);
+    setPosts(mockPosts.posts);
   }, []);
 
   const submitPost = (newPost: Post) => {
-    let allPosts: Post[] = [...posts, newPost];
+    let allPosts: Post[] = [newPost, ...posts];
     setPosts(allPosts);
     toggleModal(false);
   };
@@ -48,10 +60,11 @@ export const App: React.FC = () => {
   return (
     <main>
       <Header />
+
       <Switch>
         <Route
           exact
-          path="/"
+          path='/'
           render={() => (
             <>
               <button onClick={() => toggleModal(!modal)}>Add a post!</button>
@@ -62,13 +75,14 @@ export const App: React.FC = () => {
             </>
           )}
         />
+
         <Route
           render={() => (
             <>
               <h2>
                 Sorry, that page doesn't exist, would you like to go home?
               </h2>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to='/'>Home</NavLink>
             </>
           )}
         />

@@ -45,7 +45,9 @@
     ]
   },
   "devDependencies": {
+    "@apollo/client": "^3.4.10",
     "@types/react-router-dom": "^5.1.8",
-    "cypress": "^8.3.0"
+    "cypress": "^8.3.0",
+    "graphql": "^15.5.1"
   }
 }

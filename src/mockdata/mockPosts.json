@@ -1,8 +1,10 @@
 {
   "posts": [
     {
-      "id": 1,
+      "__typename": "post",
+      "id": "1",
       "user": {
+        "__typename": "user",
         "id": 1,
         "username": "BeeKeeper1",
         "avatar": "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg"
@@ -12,13 +14,15 @@
       "image": [
         "https://user-images.githubusercontent.com/79113236/131058964-ba612108-33e3-4bbd-b60e-857aa1a4abb5.png"
       ],
-      "created_at": "2021-08-26 14:28:22 -0600",
+      "createdAt": "2021-08-26 14:28:22 -0600",
       "upvotes": 5,
       "downvotes": 1
     },
     {
-      "id": 2,
+      "__typename": "post",
+      "id": "2",
       "user": {
+        "__typename": "user",
         "id": 1,
         "username": "BeeKeeper1",
         "avatar": "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg"
@@ -26,13 +30,15 @@
       "title": "Happy bees",
       "description": "Look how happy they are!!",
       "image": ["https://tinyurl.com/67pxcej5"],
-      "created_at": "2021-08-25 12:28:22 -0600",
+      "createdAt": "2021-08-25 12:28:22 -0600",
       "upvotes": 4,
       "downvotes": 2
     },
     {
-      "id": 3,
+      "__typename": "post",
+      "id": "3",
       "user": {
+        "__typename": "user",
         "id": 2,
         "username": "BeeNoob2",
         "avatar": "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg"
@@ -40,7 +46,7 @@
       "title": "HELP!",
       "description": "My bees are swarming, what do I do?",
       "image": ["https://tinyurl.com/977mwcuy"],
-      "created_at": "2021-08-20 18:28:22 -0600",
+      "createdAt": "2021-08-20 18:28:22 -0600",
       "upvotes": 1,
       "downvotes": 3
     }

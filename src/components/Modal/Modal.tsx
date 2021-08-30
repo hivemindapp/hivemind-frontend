@@ -21,7 +21,7 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
     addUpdateIndex: number[] | undefined
   ) => {
     setImages(imageList as never[]);
-    let onlyURLs = imageList.map((image) => image.data_url);
+    let onlyURLs = imageList.map(image => image.data_url);
     setImageURLS(onlyURLs);
   };
 
@@ -34,14 +34,21 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     const newPost = {
-      id: 2,
+      __typename: 'post',
+      id: '2',
       title: postTitle,
       description: postDescription,
       image: imageURLS,
-      user: { id: 4, username: 'workerBee1' },
+      user: {
+        __typename: 'user',
+        id: 4,
+        username: 'workerBee1',
+        avatar:
+          'https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg'
+      },
       upvotes: 0,
       downvotes: 0,
-      created_at: 'August 29, 2021',
+      createdAt: 'August 29, 2021'
     };
     submitPost(newPost);
     clearState();
@@ -49,35 +56,30 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
 
   return (
     <section
-      className="modal-wrapper"
+      className='modal-wrapper'
       onClick={(event: any) => closeModal(event)}
-      id="modalWrapper"
+      id='modalWrapper'
     >
-      <section className="modal-content" id="modalContent">
+      <section className='modal-content' id='modalContent'>
         <i
-          className="fas fa-times"
-          id="x"
+          className='fas fa-times close-modal'
+          id='x'
           onClick={(event: any) => closeModal(event)}
         ></i>
         <label>Create Post</label>
         <input
-          type="text"
-          className="post-title"
-          placeholder="title"
-          onChange={(event) => setTitle(event.target.value)}
+          type='text'
+          className='post-title'
+          placeholder='title'
+          onChange={event => setTitle(event.target.value)}
         ></input>
-        <input
-          type="text"
-          className="post-description"
-          placeholder="What's on your mind, busy bee?"
-          onChange={(event) => setDescription(event.target.value)}
-        ></input>
+        <p>Add an image:</p>
         <ImageUploading
           multiple
           value={images}
           onChange={onChange}
           maxNumber={maxNumber}
-          dataURLKey="data_url"
+          dataURLKey='data_url'
         >
           {({
             imageList,
@@ -86,10 +88,10 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
             onImageUpdate,
             onImageRemove,
             isDragging,
-            dragProps,
+            dragProps
           }) => (
             // write your building UI
-            <div className="upload__image-wrapper">
+            <div className='upload__image-wrapper'>
               <button
                 style={isDragging ? { color: 'red' } : undefined}
                 onClick={onImageUpload}
@@ -100,9 +102,9 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
               &nbsp;
               <button onClick={onImageRemoveAll}>Remove all images</button>
               {imageList.map((image, index) => (
-                <div key={index} className="image-item">
-                  <img src={image['data_url']} alt="" width="100" />
-                  <div className="image-item__btn-wrapper">
+                <div key={index} className='image-item'>
+                  <img src={image['data_url']} alt='' width='100' />
+                  <div className='image-item__btn-wrapper'>
                     <button onClick={() => onImageUpdate(index)}>Update</button>
                     <button onClick={() => onImageRemove(index)}>Remove</button>
                   </div>
@@ -111,9 +113,16 @@ export const Modal: React.FC<ModalProps> = ({ submitPost, closeModal }) => {
             </div>
           )}
         </ImageUploading>
+        <p>Add a description:</p>
         <input
-          type="submit"
-          className="post-submit-btn"
+          type='text'
+          className='post-description'
+          placeholder="What's on your mind, busy bee?"
+          onChange={event => setDescription(event.target.value)}
+        ></input>
+        <input
+          type='submit'
+          className='post-submit-btn'
           onClick={(event: React.MouseEvent<HTMLElement>) => addPost(event)}
         ></input>
       </section>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
+import mockPosts from '../../mockdata/mockPosts.json';
 
 export interface Post {
   __typename: string;
@@ -28,7 +29,7 @@ export const App: React.FC = () => {
   const [modal, toggleModal] = useState<boolean>(false);
 
   useEffect(() => {
-    setPosts(mockPosts.data);
+    setPosts(mockPosts.posts);
   }, []);
 
   const submitPost = (newPost: Post) => {

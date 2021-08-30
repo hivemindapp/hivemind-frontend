@@ -13,16 +13,19 @@ export const Card: React.FC<CardProps> = ({ post }) => {
     let now = dayjs();
     let createdAt = dayjs(post.createdAt);
     let diff = now.diff(createdAt, 'hours');
+
     if (diff >= 24) {
       let time = dayjs(post.createdAt).format('h:mm a');
       let date = dayjs(post.createdAt).format('MMMM D, YYYY');
       return `at ${time} on ${date}`;
+    } else {
+      return `${diff}hr ago`;
     }
-    return `${diff}hr ago`;
   };
 
   return (
     <button className='card'>
+      <h2>{post.title}</h2>
       <div className='user-info'>
         <img
           className='avatar'
@@ -33,11 +36,12 @@ export const Card: React.FC<CardProps> = ({ post }) => {
           Posted by {post.user.username} {formatDateCreated()}
         </p>
       </div>
-      <p></p>
-      {post.image && (
-        <img src={post.image[0]} alt={`${post.title}`} className='post-img' />
-      )}
-      <h2>{post.title}</h2>
+      <div className='preview-container'>
+        {post.image && (
+          <img className='post-img' src={post.image[0]} alt={`${post.title}`} />
+        )}
+        {!post.image && <p>{post.description}</p>}
+      </div>
     </button>
   );
 };

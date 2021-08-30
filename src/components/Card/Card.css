@@ -1,7 +1,11 @@
 .card {
-  padding: 0;
   margin: 0;
   border: 2px solid black;
+  padding: 0.5em;
+  background-color: whitesmoke;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -10,7 +14,6 @@
 }
 
 .user-info {
-  border: 1px solid red;
   display: flex;
 }
 
@@ -18,13 +21,25 @@
   height: 3em;
   width: 3em;
 }
+
+.preview-container {
+  margin-top: 0.5em;
+  width: 100%;
+  height: 35em;
+}
+
+.preview-container p {
+  border: 1px solid grey;
+  padding: 1em;
+}
+
 .post-img {
   width: 100%;
-  height: 90%;
+  height: 100%;
   object-fit: cover;
+  overflow: hidden;
 }
 
 .card h2 {
-  height: 10%;
-  margin: 0;
+  text-align: left;
 }

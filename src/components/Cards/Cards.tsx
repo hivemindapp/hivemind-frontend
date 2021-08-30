@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_POSTS } from '../../index';
 import { Post } from '../App/App';
 import { Card } from '../Card/Card';
 import './Cards.css';
 
-interface CardsProps {
-  posts: Post[] | [];
-}
+interface CardsProps {}
 
-export const Cards: React.FC<CardsProps> = ({ posts }) => {
+export const Cards: React.FC<CardsProps> = () => {
+  const [posts, setPosts] = useState([]);
+  const { loading, error, data } = useQuery(GET_ALL_POSTS);
+
+  useEffect(() => {
+    if (!loading && data) {
+      setPosts(data.posts);
+    }
+  }, [data, loading]);
+
   const makeCards = (posts: Post[]) => {
     return posts.map((post: Post) => {
       return <Card key={post.id} post={post} />;
@@ -16,8 +25,9 @@ export const Cards: React.FC<CardsProps> = ({ posts }) => {
 
   return (
     <section className='cards-container'>
-      {!!posts.length && makeCards(posts)}
-      {!posts.length && <h2>No posts yet...</h2>}
+      {loading && <p>Loading...</p>}
+      {error && <p>Error:</p>}
+      {posts.length && makeCards(posts)}
     </section>
   );
 };

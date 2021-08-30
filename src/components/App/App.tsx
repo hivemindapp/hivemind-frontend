@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { Header } from '../Header/Header';
-import mockPosts from '../../mockdata/mockPosts.json';
 import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
 
 export interface Post {
-  id: number;
+  __typename: string;
+  createdAt: string;
+  id: string;
   title: string;
   description: string;
   image?: string[];
   user: User;
-  upvotes: number;
-  downvotes: number;
-  created_at: string;
+  upvotes?: number;
+  downvotes?: number;
 }
 
 export interface User {
+  __typename: string;
   id: number;
   username: string;
+  avatar: string;
 }
 
 export const App: React.FC = () => {
@@ -51,11 +53,11 @@ export const App: React.FC = () => {
       <Switch>
         <Route
           exact
-          path="/"
+          path='/'
           render={() => (
             <>
               <button onClick={() => toggleModal(!modal)}>Add a post!</button>
-              <Cards posts={posts} />
+              <Cards />
               {modal && (
                 <Modal submitPost={submitPost} closeModal={closeModal} />
               )}
@@ -68,7 +70,7 @@ export const App: React.FC = () => {
               <h2>
                 Sorry, that page doesn't exist, would you like to go home?
               </h2>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to='/'>Home</NavLink>
             </>
           )}
         />

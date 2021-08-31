@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
-// import { useQuery } from '@apollo/client';
-// import { GET_ALL_POSTS } from '../../index';
-// import mockPosts from '../../mockdata/mockPosts.json';
 
 export interface Post {
   __typename: string;
@@ -28,17 +25,6 @@ export interface User {
 
 export const App: React.FC = () => {
   const [modal, toggleModal] = useState<boolean>(false);
-  // const { loading, error, data } = useQuery(GET_ALL_POSTS);
-
-  // useEffect(() => {
-  //   setPosts(mockPosts.posts);
-  // }, []);
-
-  // const submitPost = (newPost: Post) => {
-  //   let allPosts: Post[] = [newPost, ...posts];
-  //   setPosts(allPosts);
-  //   toggleModal(false);
-  // };
 
   const closeModal = (event: any) => {
     if (event.target.id === 'x') {

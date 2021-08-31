@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
 import { gql, useMutation } from '@apollo/client';
 import './Modal.css';
+import { GET_ALL_POSTS } from '../..';
 
 const ADD_POST = gql`
   mutation createPost($input: CreatePostInput!) {
@@ -32,23 +33,9 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
   const [imageURLS, setImageURLS] = useState<string>('');
-  const [createPost, { data, loading, error }] = useMutation(ADD_POST);
-
-  const maxNumber = 2;
-  const onChange = (
-    imageList: ImageListType,
-    addUpdateIndex: number[] | undefined
-  ) => {
-    setImages(imageList as never[]);
-    let onlyURLs = imageList.map(image => image.data_url);
-    setImageURLS(onlyURLs[0].toString());
-  };
-
-  const clearState = () => {
-    setImages([]);
-    setTitle('');
-    setDescription('');
-  };
+  const [createPost, { data, loading, error }] = useMutation(ADD_POST, {
+    refetchQueries: [GET_ALL_POSTS]
+  });
 
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -64,8 +51,31 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
       }
     });
 
-    closeModal(event);
-    clearState();
+    if (data && !error && !loading) {
+      closeModal(event);
+      clearState();
+    }
+  };
+
+  const clearState = () => {
+    setImages([]);
+    setTitle('');
+    setDescription('');
+  };
+
+  // react-images-uploading specifications:
+  const maxNumber = 2;
+  const onChange = (
+    imageList: ImageListType,
+    addUpdateIndex: number[] | undefined
+  ) => {
+    setImages(imageList as never[]);
+    console.log(imageList);
+    let onlyURLs = imageList.map(image => image.data_url);
+    // in future when BE allows arrays, we may do this v
+    // setImageURLS(onlyURLs)
+    // we might alternately send them the imageList object and delete imageURLS from state entirely
+    setImageURLS(onlyURLs[0].toString());
   };
 
   return (

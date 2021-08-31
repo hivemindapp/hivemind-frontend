@@ -18,6 +18,8 @@ export const Card: React.FC<CardProps> = ({ post }) => {
       let time = dayjs(post.createdAt).format('h:mm a');
       let date = dayjs(post.createdAt).format('MMMM D, YYYY');
       return `at ${time} on ${date}`;
+    } else if (diff === 0) {
+      return 'just now';
     } else {
       return `${diff}hr ago`;
     }

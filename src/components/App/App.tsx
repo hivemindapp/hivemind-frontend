@@ -34,7 +34,6 @@ export const App: React.FC = () => {
     } else if (event.target.closest('section').id === 'modalContent') {
       return;
     }
-
     toggleModal(false);
   };
 

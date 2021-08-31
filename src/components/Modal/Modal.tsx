@@ -111,6 +111,8 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
             onChange={onChange}
             maxNumber={maxNumber}
             dataURLKey="data_url"
+            acceptType={['jpg', 'png']}
+            maxFileSize={1000000}
           >
             {({
               imageList,
@@ -120,15 +122,34 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
               onImageRemove,
               isDragging,
               dragProps,
+              errors,
             }) => (
-              // write your building UI
               <div className="upload__image-wrapper">
+                {errors && (
+                  <div>
+                    {errors.maxNumber && (
+                      <span>Number of selected images exceed maxNumber</span>
+                    )}
+                    {errors.acceptType && (
+                      <span>Your selected file type is not allowed</span>
+                    )}
+                    {errors.maxFileSize && (
+                      <span>Selected file size exceed maxFileSize</span>
+                    )}
+                  </div>
+                )}
+                <div {...dragProps} className="upload-space">
+                  {isDragging ? 'Drop here please' : 'Upload space'}
+                  {imageList.map((image, index) => (
+                    <img key={index} src={image.data_url} />
+                  ))}
+                </div>
                 <button
                   style={isDragging ? { color: 'red' } : undefined}
                   onClick={onImageUpload}
                   {...dragProps}
                 >
-                  Click or Drop here
+                  Click here to upload
                 </button>
                 &nbsp;
                 <button onClick={onImageRemoveAll}>Remove all images</button>
@@ -139,7 +160,10 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
                       <button onClick={() => onImageUpdate(index)}>
                         Update
                       </button>
-                      <button onClick={() => onImageRemove(index)}>
+                      <button
+                        className="remove-img-btn"
+                        onClick={() => onImageRemove(index)}
+                      >
                         Remove
                       </button>
                     </div>

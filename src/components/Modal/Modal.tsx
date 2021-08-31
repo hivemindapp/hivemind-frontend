@@ -72,9 +72,8 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     setImages(imageList as never[]);
     console.log(imageList);
     let onlyURLs = imageList.map(image => image.data_url);
-    // in future when BE allows arrays, we may do this v
-    // setImageURLS(onlyURLs)
-    // we might alternately send them the imageList object and delete imageURLS from state entirely
+    // onlyURLs[0].toString() is the workaround until BE allows arrays of images
+    // in future we may not do onlyURLs and may send array of entire image objects to BE
     setImageURLS(onlyURLs[0].toString());
   };
 
@@ -155,7 +154,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
             className='post-submit-btn'
             onClick={(event: React.MouseEvent<HTMLElement>) => addPost(event)}
           ></input>
-          {loading && <p>Submitting post....</p>}
+          {loading && <p>Submitting post...</p>}
           {error && <p>{error.message}</p>}
         </section>
       </section>

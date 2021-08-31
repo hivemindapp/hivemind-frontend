@@ -43,6 +43,8 @@ export const App: React.FC = () => {
   const closeModal = (event: any) => {
     if (event.target.id === 'x') {
       toggleModal(false);
+    } else if (event.target.id === 'submitButton') {
+      toggleModal(false);
     } else if (event.target.closest('section').id === 'modalContent') {
       return;
     }

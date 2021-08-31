@@ -1,6 +1,6 @@
-describe('Navigation Bar', () => {
+describe('Modal Spec', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/').click('.add-post-btn');
+    cy.visit('http://localhost:3000/').get('.add-post-btn').click();
   });
 
   it('Should open a modal upon clicking Add a Post!', () => {
@@ -27,10 +27,8 @@ describe('Navigation Bar', () => {
     cy.get('.post-submit-btn').should('be.visible');
   });
 
-  it('Submit button should close modal and return to homescreen with new post at the top', () => {
-    cy.get('.post-submit-btn')
-      .click()
-      .get('.modal-content')
-      .should('not.be.visible');
+  it('Submit button should close modal and return to homescreen', () => {
+    cy.get('.post-submit-btn').click();
+    cy.get('.cards-container').should('be.visible');
   });
 });

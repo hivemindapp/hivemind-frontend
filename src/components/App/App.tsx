@@ -47,7 +47,12 @@ export const App: React.FC = () => {
           path="/"
           render={() => (
             <>
-              <button onClick={() => toggleModal(!modal)}>Add a post!</button>
+              <button
+                className="add-post-btn"
+                onClick={() => toggleModal(!modal)}
+              >
+                Add a post!
+              </button>
               <Cards />
               {modal && <Modal closeModal={closeModal} />}
             </>

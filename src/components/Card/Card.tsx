@@ -18,6 +18,8 @@ export const Card: React.FC<CardProps> = ({ post }) => {
       let time = dayjs(post.createdAt).format('h:mm a');
       let date = dayjs(post.createdAt).format('MMMM D, YYYY');
       return `at ${time} on ${date}`;
+    } else if (diff === 0) {
+      return 'just now';
     } else {
       return `${diff}hr ago`;
     }
@@ -37,14 +39,10 @@ export const Card: React.FC<CardProps> = ({ post }) => {
         </p>
       </div>
       <div className='preview-container'>
-        {!!post.image!.length && (
-          <img
-            className='post-img'
-            src={post.image![0]}
-            alt={`${post.title}`}
-          />
+        {!!post.image && (
+          <img className='post-img' src={post.image} alt={`${post.title}`} />
         )}
-        {!post.image!.length && <p>{post.description}</p>}
+        {!post.image && <p>{post.description}</p>}
       </div>
     </button>
   );

@@ -46,7 +46,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           title: postTitle,
           description: postDescription,
           image: imageURLS,
-          userId: 5
+          userId: 9
         }
       }
     });
@@ -70,7 +70,6 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     addUpdateIndex: number[] | undefined
   ) => {
     setImages(imageList as never[]);
-    console.log(imageList);
     let onlyURLs = imageList.map(image => image.data_url);
     // onlyURLs[0].toString() is the workaround until BE allows arrays of images
     // in future we may not do onlyURLs and may send array of entire image objects to BE

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Post } from '../App/App';
+import { NavLink } from 'react-router-dom';
 import 'dayjs';
 import './Card.css';
 import dayjs from 'dayjs';
@@ -28,24 +29,26 @@ export const Card: React.FC<CardProps> = ({ post }) => {
   };
 
   return (
-    <button className='card'>
-      <h2>{post.title}</h2>
-      <div className='user-info'>
-        <img
-          className='avatar'
-          src={post.user.avatar}
-          alt={`${post.user.username}'s avatar`}
-        />
-        <p>
-          Posted by {post.user.username} {formatDateCreated()}
-        </p>
-      </div>
-      <div className='preview-container'>
-        {!!post.image && (
-          <img className='post-img' src={post.image} alt={`${post.title}`} />
-        )}
-        {!post.image && <p className='post-desc'>{post.description}</p>}
-      </div>
-    </button>
+    <NavLink to={`/posts/${post.id}`}>
+      <button className='card'>
+        <h2>{post.title}</h2>
+        <div className='user-info'>
+          <img
+            className='avatar'
+            src={post.user.avatar}
+            alt={`${post.user.username}'s avatar`}
+          />
+          <p>
+            Posted by {post.user.username} {formatDateCreated()}
+          </p>
+        </div>
+        <div className='preview-container'>
+          {!!post.image && (
+            <img className='post-img' src={post.image} alt={`${post.title}`} />
+          )}
+          {!post.image && <p className='post-desc'>{post.description}</p>}
+        </div>
+      </button>
+    </NavLink>
   );
 };

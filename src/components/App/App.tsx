@@ -3,6 +3,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
+import { PostDetails } from '../PostDetails/PostDetails';
 
 export interface Post {
   __typename: string;
@@ -57,6 +58,14 @@ export const App: React.FC = () => {
               {modal && <Modal closeModal={closeModal} />}
             </>
           )}
+        />
+
+        <Route
+          path='/posts/:id'
+          render={({ match }) => {
+            const { id } = match.params;
+            return <PostDetails id={id} />;
+          }}
         />
 
         <Route

@@ -62,8 +62,14 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   };
 
   const validateForm = () => {
-    const element = document.getElementById('formValidation');
-    element?.classList.remove('hidden');
+    let element;
+    if (!postTitle) {
+      element = document.getElementById('titleValidation');
+      element?.classList.remove('hidden');
+    } else if (!postDescription) {
+      element = document.getElementById('descValidation');
+      element?.classList.remove('hidden');
+    }
   };
 
   const clearState = () => {
@@ -106,7 +112,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           required
         ></input>
 
-        <span className="error hidden" id="formValidation">
+        <span className="error hidden" id="titleValidation">
           <i className="fas fa-exclamation-triangle error"></i>
           <span>Please provide a title</span>
         </span>
@@ -178,7 +184,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           required
         ></input>
 
-        <span className="error hidden" id="formValidation">
+        <span className="error hidden" id="descValidation">
           <i className="fas fa-exclamation-triangle error"></i>
           <span>Please provide a description</span>
         </span>

@@ -20,8 +20,10 @@ export const Card: React.FC<CardProps> = ({ post }) => {
       return `at ${time} on ${date}`;
     } else if (diff === 0) {
       return 'just now';
+    } else if (diff === 1) {
+      return `${diff} hr ago`;
     } else {
-      return `${diff}hr ago`;
+      return `${diff} hours ago`;
     }
   };
 
@@ -42,7 +44,7 @@ export const Card: React.FC<CardProps> = ({ post }) => {
         {!!post.image && (
           <img className='post-img' src={post.image} alt={`${post.title}`} />
         )}
-        {!post.image && <p>{post.description}</p>}
+        {!post.image && <p className='post-desc'>{post.description}</p>}
       </div>
     </button>
   );

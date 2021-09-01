@@ -20,8 +20,10 @@ export const Card: React.FC<CardProps> = ({ post }) => {
       return `at ${time} on ${date}`;
     } else if (diff === 0) {
       return 'just now';
+    } else if (diff === 1) {
+      return `${diff} hr ago`;
     } else {
-      return `${diff}hr ago`;
+      return `${diff} hours ago`;
     }
   };
 

@@ -9,7 +9,6 @@ describe('All posts view', () => {
         aliasPostsQuery(req, 'posts');
       }
     );
-
     cy.visit('http://localhost:3000/');
   });
 
@@ -24,7 +23,7 @@ describe('All posts view', () => {
   });
 
   it('If it was posted further in the past, it should show the full date', () => {
-    cy.contains('at 12:28 pm on August 25, 2021');
+    cy.contains('at 6:28 pm on August 20, 2021');
   });
 
   it('should show a title', () => {

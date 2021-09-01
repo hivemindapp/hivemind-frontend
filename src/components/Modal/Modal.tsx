@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
 import { gql, useMutation } from '@apollo/client';
 import './Modal.css';
-import { GET_ALL_POSTS } from '../..';
+import { GET_ALL_POSTS } from '../../index';
 
 const ADD_POST = gql`
   mutation createPost($input: CreatePostInput!) {

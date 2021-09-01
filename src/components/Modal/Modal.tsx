@@ -49,7 +49,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
             title: postTitle,
             description: postDescription,
             image: imageURLS,
-            userId: 5
+            userId: 9
           }
         }
       });
@@ -66,7 +66,8 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     if (!postTitle) {
       element = document.getElementById('titleValidation');
       element?.classList.remove('hidden');
-    } else if (!postDescription) {
+    }
+    if (!postDescription) {
       element = document.getElementById('descValidation');
       element?.classList.remove('hidden');
     }
@@ -91,11 +92,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   };
 
   return (
-    <section
-      className="modal-wrapper"
-      onClick={(event: any) => closeModal(event)}
-      id="modalWrapper"
-    >
+    <section className="modal-wrapper" id="modalWrapper">
       <section className="modal-content" id="modalContent">
         <i
           className="fas fa-times close-modal"
@@ -103,14 +100,13 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           onClick={(event: any) => closeModal(event)}
         ></i>
         <label className="post-prompt">Create Post</label>
-        <input
-          type="text"
+        <textarea
           className="post-title"
           placeholder="title"
           maxLength={100}
           onChange={(event) => setTitle(event.target.value)}
           required
-        ></input>
+        ></textarea>
 
         <span className="error hidden" id="titleValidation">
           <i className="fas fa-exclamation-triangle error"></i>
@@ -176,13 +172,12 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           )}
         </ImageUploading>
         <p className="post-prompt">Add a description:</p>
-        <input
-          type="text"
+        <textarea
           className="post-description"
           placeholder="What's on your mind, busy bee?"
           onChange={(event) => setDescription(event.target.value)}
           required
-        ></input>
+        ></textarea>
 
         <span className="error hidden" id="descValidation">
           <i className="fas fa-exclamation-triangle error"></i>

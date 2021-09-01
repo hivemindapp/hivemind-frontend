@@ -17,26 +17,14 @@ describe('All posts view', () => {
     cy.get('.cards-container').children().should('have.length', 3);
   });
 
-  it.skip('If there are no posts, you should see a prompt', () => {});
-
   it('Each post should show who posted it (avatar and username)', () => {
     cy.contains('Posted by BeeKeeper1');
     cy.contains('BeeNoob2');
     cy.get('.avatar').should('be.visible');
   });
 
-  //skipping for now because I'm not sure how to make this test consistently pass based on Date.now()
-  it.skip('If it was posted within the past 24 hours it should say posted in hours', () => {
-    cy.contains('2 hours ago');
-  });
-
-  //skipping for now because I'm not sure how to make this test consistently pass based on Date.now()
-  it.skip('If it was posted within the past hour it should say just now', () => {
-    cy.contains('just now');
-  });
-
   it('If it was posted further in the past, it should show the full date', () => {
-    cy.contains('at 2:28 pm on August 26, 2021');
+    cy.contains('at 12:28 pm on August 25, 2021');
   });
 
   it('should show a title', () => {
@@ -48,11 +36,27 @@ describe('All posts view', () => {
     cy.get('.post-img').should('be.visible');
   });
 
-  // not sure how to assert # of characters
-  it('If it does not have an image, it should show X characters of the description', () => {
+  it('If it does not have an image, it should show the description', () => {
     cy.contains('My bees are swarming, what do I do?');
   });
 
+  // not sure how to assert # of characters
+  it.skip('If it does not have an image, it should only show X characters of the description', () => {});
+
+  // not sure how to mock this out
+  it.skip('If there are no posts, you should see a prompt', () => {});
+
+  //skipping for now because I'm not sure how to make this test consistently pass without changing the mockPosts
+  it.skip('If it was posted within the past 24 hours it should say posted in hours', () => {
+    cy.contains('1 hr ago');
+  });
+
+  //skipping for now because I'm not sure how to make this test consistently pass based on Date.now()
+  it.skip('If it was posted within the past hour it should say just now', () => {
+    cy.contains('just now');
+  });
+
+  // skipping last 3 because we don't have these buttons yet
   it.skip('should have a button to upvote and a button to downvote', () => {});
 
   it.skip('should be able to upvote it and see the number change', () => {});

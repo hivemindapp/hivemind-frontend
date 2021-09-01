@@ -44,7 +44,7 @@ export const Card: React.FC<CardProps> = ({ post }) => {
         {!!post.image && (
           <img className='post-img' src={post.image} alt={`${post.title}`} />
         )}
-        {!post.image && <p>{post.description}</p>}
+        {!post.image && <p className='post-desc'>{post.description}</p>}
       </div>
     </button>
   );

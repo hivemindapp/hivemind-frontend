@@ -40,6 +40,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
 
+    // instead of sending imageURLs we will send an array of signed IDs
     createPost({
       variables: {
         input: {
@@ -70,6 +71,10 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     addUpdateIndex: number[] | undefined
   ) => {
     setImages(imageList as never[]);
+    // try and do a mutation here to send the blob to the BE
+    // the response from the BE will be a signed ID
+    // set that in state (array of image IDs)
+    // when we create an actual post on submit, we send the array of signed IDs
     let onlyURLs = imageList.map(image => image.data_url);
     // onlyURLs[0].toString() is the workaround until BE allows arrays of images
     // in future we may not do onlyURLs and may send array of entire image objects to BE

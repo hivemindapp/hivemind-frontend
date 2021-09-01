@@ -18,19 +18,14 @@ describe('All posts view', () => {
   });
 
   it('Each post should show who posted it (avatar and username)', () => {
-    cy.contains('Posted by BeeKeeper1');
-    cy.contains('BeeNoob2');
+    cy.get('.card').first().contains('Posted by BeeKeeper1');
+    cy.get('.card').eq(2).contains('Posted by BeeNoob2');
     cy.get('.avatar').should('be.visible');
   });
 
-  // passes locally, but not on circleci, not sure why
-  it.skip('If it was posted further in the past, it should show the full date', () => {
-    cy.contains('at 6:28 pm on August 20, 2021');
-  });
-
   it('should show a title', () => {
-    cy.get('h2').contains('New research on waxworms');
-    cy.get('h2').contains('Happy bees');
+    cy.get('.card').first().contains('New research on waxworms');
+    cy.get('.card').eq(1).contains('Happy bees');
   });
 
   it('If it has an image, it should show the image and no description', () => {
@@ -41,8 +36,10 @@ describe('All posts view', () => {
     cy.contains('My bees are swarming, what do I do?');
   });
 
-  // not sure how to assert # of characters
-  it.skip('If it does not have an image, it should only show X characters of the description', () => {});
+  // passes locally, but not on circleci, not sure why
+  it.skip('If it was posted further in the past, it should show the full date', () => {
+    cy.contains('at 6:28 pm on August 20, 2021');
+  });
 
   // not sure how to mock this out
   it.skip('If there are no posts, you should see a prompt', () => {});

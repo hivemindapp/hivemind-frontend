@@ -1,9 +1,19 @@
+import { aliasPostsQuery } from '../utils/graphql-test-utils';
+
 describe('All posts view', () => {
   beforeEach(() => {
+    cy.intercept(
+      'POST',
+      'https://hivemind-staging-branch.herokuapp.com/graphql',
+      req => {
+        aliasPostsQuery(req, 'posts');
+      }
+    );
+
     cy.visit('http://localhost:3000/');
   });
 
-  it('When you visit the page, you should see posts', () => {});
+  it.only('When you visit the page, you should see posts', () => {});
 
   it('If there are no posts, you should see a prompt', () => {});
 

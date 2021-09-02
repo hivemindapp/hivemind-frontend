@@ -1,0 +1,19 @@
+.post-details-section {
+  display: grid;
+  grid-template-areas:
+    'content'
+    'comments';
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1200px) {
+  .post-details-section {
+    display: grid;
+    grid-template-areas: 'content comments';
+  }
+  .post-content {
+    grid-area: 'content';
+  }
+}

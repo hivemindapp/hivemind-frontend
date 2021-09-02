@@ -1,0 +1,10 @@
+.comment-section {
+  width: 50%;
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-area: 'comments';
+  gap: 1em;
+}

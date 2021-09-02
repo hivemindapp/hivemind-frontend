@@ -1,5 +1,5 @@
 import React from 'react';
-import { Post } from '../App/App';
+import { Post } from '../../utils/types';
 import { NavLink } from 'react-router-dom';
 import { PostedBy } from '../PostedBy/PostedBy';
 import './Card.css';

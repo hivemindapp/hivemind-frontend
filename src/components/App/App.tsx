@@ -5,25 +5,6 @@ import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
 import { PostDetails } from '../PostDetails/PostDetails';
 
-export interface Post {
-  __typename: string;
-  createdAt: string;
-  id: string;
-  title: string;
-  description: string;
-  image?: string;
-  user: User;
-  upvotes?: number;
-  downvotes?: number;
-}
-
-export interface User {
-  __typename: string;
-  id: number;
-  username: string;
-  avatar: string;
-}
-
 export const App: React.FC = () => {
   const [modal, toggleModal] = useState<boolean>(false);
 

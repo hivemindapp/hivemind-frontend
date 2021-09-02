@@ -1,8 +1,7 @@
 import React from 'react';
 import { formatDateCreated } from '../../utils/formatDateCreated';
 import './PostedBy.css';
-import { Post } from '../App/App';
-import { Details } from '../PostDetails/PostDetails';
+import { Post, Details } from '../../utils/types';
 
 interface PostedByProps {
   post: Post | Details;

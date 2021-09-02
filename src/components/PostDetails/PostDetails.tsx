@@ -1,23 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { GET_POST_DETAILS } from '../../index';
 import { useQuery } from '@apollo/client';
-import { User } from '../App/App';
-import { formatDateCreated } from '../../utils/formatDateCreated';
+import { Details } from '../../utils/types';
 import { PostedBy } from '../PostedBy/PostedBy';
 interface PostDetailsProps {
   id: string;
-}
-export interface Details {
-  comments: string[];
-  description: string;
-  downvotes?: number;
-  upvotes?: number;
-  createdAt: string;
-  id: string;
-  image: string;
-  title: string;
-  user: User;
-  __typename: string;
 }
 
 export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {

@@ -3,6 +3,7 @@ import { GET_POST_DETAILS } from '../../index';
 import { useQuery } from '@apollo/client';
 import { Details } from '../../utils/types';
 import { PostedBy } from '../PostedBy/PostedBy';
+import { Comments } from '../Comments/Comments';
 interface PostDetailsProps {
   id: string;
 }
@@ -34,8 +35,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
           <h2>Description</h2>
           <p>{details.description}</p>
           <h2>Comments:</h2>
-          {!details.comments.length && <p>No comments yet...</p>}
-          {!!details.comments.length && <p>{details.comments[0].content}</p>}
+          <Comments comments={details.comments} />
         </>
       )}
     </main>

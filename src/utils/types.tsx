@@ -18,7 +18,7 @@ export interface User {
 }
 
 export interface Details {
-  comments: Comment[];
+  comments: CommentType[];
   description: string;
   downvotes?: number;
   upvotes?: number;
@@ -30,7 +30,7 @@ export interface Details {
   __typename: string;
 }
 
-export interface Comment {
+export interface CommentType {
   __typename: string;
   id: string;
   content: string;

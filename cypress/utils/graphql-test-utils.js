@@ -9,7 +9,7 @@ export const hasOperationName = (req, operationName) => {
 // Alias Posts query if operationName matches
 export const aliasPostsQuery = (req, operationName) => {
   if (hasOperationName(req, operationName)) {
-    req.reply(res => {
+    req.reply((res) => {
       res.body.data = mockPosts;
     });
   }

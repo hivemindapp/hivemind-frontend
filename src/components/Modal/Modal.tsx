@@ -33,135 +33,162 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
   const [imageURLS, setImageURLS] = useState<string>('');
-  const [createPost, { data, loading, error }] = useMutation(ADD_POST, {
+  const [createPost] = useMutation(ADD_POST, {
     refetchQueries: [GET_ALL_POSTS]
   });
 
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
 
-    // instead of sending imageURLs we will send an array of signed IDs
-    createPost({
-      variables: {
-        input: {
-          title: postTitle,
-          description: postDescription,
-          image: imageURLS,
-          userId: 9
+    if (!postTitle || !postDescription) {
+      validateForm();
+    } else {
+      createPost({
+        variables: {
+          input: {
+            title: postTitle,
+            description: postDescription,
+            image: imageURLS,
+            userId: 9
+          }
         }
-      }
-    });
+      });
 
-    if (data && !error && !loading) {
       closeModal(event);
       clearState();
     }
   };
 
+  const validateForm = () => {
+    let element;
+    if (!postTitle) {
+      element = document.getElementById('titleValidation');
+      element?.classList.remove('hidden');
+    }
+    if (!postDescription) {
+      element = document.getElementById('descValidation');
+      element?.classList.remove('hidden');
+    }
+  };
+
   const clearState = () => {
     setImages([]);
+    setImageURLS('');
     setTitle('');
     setDescription('');
   };
-
-  // react-images-uploading specifications:
   const maxNumber = 2;
   const onChange = (
     imageList: ImageListType,
     addUpdateIndex: number[] | undefined
   ) => {
     setImages(imageList as never[]);
-    // try and do a mutation here to send the blob to the BE
-    // the response from the BE will be a signed ID
-    // set that in state (array of image IDs)
-    // when we create an actual post on submit, we send the array of signed IDs
-    let onlyURLs = imageList.map(image => image.data_url);
+    let onlyURLs = imageList.map((image) => image.data_url);
     // onlyURLs[0].toString() is the workaround until BE allows arrays of images
     // in future we may not do onlyURLs and may send array of entire image objects to BE
     setImageURLS(onlyURLs[0].toString());
   };
 
   return (
-    <>
-      <section
-        className='modal-wrapper'
-        onClick={(event: any) => closeModal(event)}
-        id='modalWrapper'
-      >
-        <section className='modal-content' id='modalContent'>
-          <i
-            className='fas fa-times close-modal'
-            id='x'
-            onClick={(event: any) => closeModal(event)}
-          ></i>
-          <label>Create Post</label>
-          <input
-            type='text'
-            className='post-title'
-            placeholder='title'
-            onChange={event => setTitle(event.target.value)}
-          ></input>
-          <p>Add an image:</p>
-          <ImageUploading
-            multiple
-            value={images}
-            onChange={onChange}
-            maxNumber={maxNumber}
-            dataURLKey='data_url'
-          >
-            {({
-              imageList,
-              onImageUpload,
-              onImageRemoveAll,
-              onImageUpdate,
-              onImageRemove,
-              isDragging,
-              dragProps
-            }) => (
-              // write your building UI
-              <div className='upload__image-wrapper'>
-                <button
-                  style={isDragging ? { color: 'red' } : undefined}
-                  onClick={onImageUpload}
-                  {...dragProps}
-                >
-                  Click or Drop here
-                </button>
-                &nbsp;
-                <button onClick={onImageRemoveAll}>Remove all images</button>
-                {imageList.map((image, index) => (
-                  <div key={index} className='image-item'>
-                    <img src={image['data_url']} alt='' width='100' />
-                    <div className='image-item__btn-wrapper'>
-                      <button onClick={() => onImageUpdate(index)}>
-                        Update
-                      </button>
-                      <button onClick={() => onImageRemove(index)}>
-                        Remove
-                      </button>
-                    </div>
+    <section className="modal-wrapper" id="modalWrapper">
+      <section className="modal-content" id="modalContent">
+        <i
+          className="fas fa-times close-modal"
+          id="x"
+          onClick={(event: any) => closeModal(event)}
+        ></i>
+        <label className="post-prompt">Create Post</label>
+        <textarea
+          className="post-title"
+          placeholder="title"
+          maxLength={100}
+          onChange={(event) => setTitle(event.target.value)}
+          required
+        ></textarea>
+
+        <span className="error hidden" id="titleValidation">
+          <i className="fas fa-exclamation-triangle error"></i>
+          <span>Please provide a title</span>
+        </span>
+
+        <p className="post-prompt">Add an image:</p>
+        <ImageUploading
+          multiple
+          value={images}
+          onChange={onChange}
+          maxNumber={maxNumber}
+          dataURLKey="data_url"
+          acceptType={['jpg', 'png']}
+          maxFileSize={1000000}
+        >
+          {({
+            imageList,
+            onImageUpload,
+            onImageRemoveAll,
+            onImageUpdate,
+            onImageRemove,
+            isDragging,
+            dragProps,
+            errors
+          }) => (
+            <div className="upload__image-wrapper">
+              {errors && (
+                <div>
+                  {errors.maxNumber && (
+                    <span>Number of selected images exceed maxNumber</span>
+                  )}
+                  {errors.acceptType && (
+                    <span>Your selected file type is not allowed</span>
+                  )}
+                  {errors.maxFileSize && (
+                    <span>Selected file size exceed maxFileSize</span>
+                  )}
+                </div>
+              )}
+              <button
+                style={isDragging ? { color: 'red' } : undefined}
+                className="drag-button"
+                onClick={onImageUpload}
+                {...dragProps}
+              >
+                Click or drag image to upload
+              </button>
+              &nbsp;
+              <button className="remove-img-btn" onClick={onImageRemoveAll}>
+                Remove all images
+              </button>
+              {imageList.map((image, index) => (
+                <div key={index} className="image-item">
+                  <img src={image['data_url']} alt="" width="100" />
+                  <div className="image-item__btn-wrapper">
+                    <button onClick={() => onImageUpdate(index)}>Update</button>
+                    <button onClick={() => onImageRemove(index)}>Remove</button>
                   </div>
-                ))}
-              </div>
-            )}
-          </ImageUploading>
-          <p>Add a description:</p>
-          <input
-            type='text'
-            className='post-description'
-            placeholder="What's on your mind, busy bee?"
-            onChange={event => setDescription(event.target.value)}
-          ></input>
-          <input
-            type='submit'
-            id='submitButton'
-            className='post-submit-btn'
-            onClick={(event: React.MouseEvent<HTMLElement>) => addPost(event)}
-          ></input>
-          {loading && <p>Submitting post...</p>}
-          {error && <p>{error.message}</p>}
-        </section>
+                </div>
+              ))}
+            </div>
+          )}
+        </ImageUploading>
+        <p className="post-prompt">Add a description:</p>
+        <textarea
+          className="post-description"
+          placeholder="What's on your mind, busy bee?"
+          onChange={(event) => setDescription(event.target.value)}
+          required
+        ></textarea>
+
+        <span className="error hidden" id="descValidation">
+          <i className="fas fa-exclamation-triangle error"></i>
+          <span>Please provide a description</span>
+        </span>
+
+        <input
+          type="submit"
+          id="submitButton"
+          className="post-submit-btn"
+          onClick={(event: React.MouseEvent<HTMLElement>) => addPost(event)}
+        ></input>
       </section>
-    </>
+    </section>
   );
 };

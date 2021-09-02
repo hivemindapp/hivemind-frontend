@@ -34,7 +34,6 @@ export const App: React.FC = () => {
     } else if (event.target.closest('section').id === 'modalContent') {
       return;
     }
-
     toggleModal(false);
   };
 
@@ -45,10 +44,15 @@ export const App: React.FC = () => {
       <Switch>
         <Route
           exact
-          path='/'
+          path="/"
           render={() => (
             <>
-              <button onClick={() => toggleModal(!modal)}>Add a post!</button>
+              <button
+                className="add-post-btn"
+                onClick={() => toggleModal(!modal)}
+              >
+                Add a post!
+              </button>
               <Cards />
               {modal && <Modal closeModal={closeModal} />}
             </>
@@ -61,7 +65,7 @@ export const App: React.FC = () => {
               <h2>
                 Sorry, that page doesn't exist, would you like to go home?
               </h2>
-              <NavLink to='/'>Home</NavLink>
+              <NavLink to="/">Home</NavLink>
             </>
           )}
         />

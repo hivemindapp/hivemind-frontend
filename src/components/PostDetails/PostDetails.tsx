@@ -30,10 +30,12 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
           <section className='post-content'>
             <h2>Title: {details.title}</h2>
             <PostedBy post={details} />
-            <img
-              src={details.image}
-              alt={`User upload to go with post titled: ${details.title}`}
-            />
+            {details.image && (
+              <img
+                src={details.image}
+                alt={`User upload to go with post titled: ${details.title}`}
+              />
+            )}
             <h2>Description</h2>
             <p>{details.description}</p>
           </section>

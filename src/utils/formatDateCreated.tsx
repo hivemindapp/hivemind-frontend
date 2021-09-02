@@ -1,15 +1,13 @@
 import dayjs from 'dayjs';
 
-export const formatDateCreated = (post: any) => {
-  console.log('created', post.createdAt);
-
+export const formatDateCreated = (created: string) => {
   let now = dayjs();
-  let createdAt = dayjs(post.createdAt);
-  let diff = now.diff(createdAt, 'hours');
+  let createdAt = dayjs(created);
+  let diff = now.diff(created, 'hours');
 
   if (diff >= 24) {
-    let time = dayjs(post.createdAt).format('h:mm a');
-    let date = dayjs(post.createdAt).format('MMMM D, YYYY');
+    let time = createdAt.format('h:mm a');
+    let date = createdAt.format('MMMM D, YYYY');
     return `at ${time} on ${date}`;
   } else if (diff === 0) {
     return 'just now';

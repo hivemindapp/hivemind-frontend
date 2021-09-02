@@ -3,10 +3,11 @@ import { GET_POST_DETAILS } from '../../index';
 import { useQuery } from '@apollo/client';
 import { User } from '../App/App';
 import { formatDateCreated } from '../../utils/formatDateCreated';
+import { PostedBy } from '../PostedBy/PostedBy';
 interface PostDetailsProps {
   id: string;
 }
-interface Details {
+export interface Details {
   comments: string[];
   description: string;
   downvotes?: number;
@@ -38,16 +39,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
       {details && !loading && !error && (
         <>
           <h2>Title: {details.title}</h2>
-          <div className='user-info'>
-            <img
-              className='avatar'
-              src={details.user.avatar}
-              alt={`${details.user.username}'s avatar`}
-            />
-            <p>
-              Posted by {details.user.username} {formatDateCreated(details)}
-            </p>
-          </div>
+          <PostedBy post={details} />
           <img
             src={details.image}
             alt={`User upload to go with post titled: ${details.title}`}

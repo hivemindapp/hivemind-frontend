@@ -14,15 +14,6 @@
   cursor: pointer;
 }
 
-.user-info {
-  display: flex;
-}
-
-.avatar {
-  height: 3em;
-  width: 3em;
-}
-
 .preview-container {
   margin-top: 0.5em;
   width: 100%;

@@ -44,6 +44,7 @@ export const GET_POST_DETAILS = gql`
       image
       upvotes
       downvotes
+      createdAt
       user {
         id
         username
@@ -54,6 +55,7 @@ export const GET_POST_DETAILS = gql`
         content
         upvotes
         downvotes
+        createdAt
         user {
           id
           username

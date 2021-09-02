@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { GET_POST_DETAILS } from '../../index';
 import { useQuery } from '@apollo/client';
 import { User } from '../App/App';
+import dayjs from 'dayjs';
 interface PostDetailsProps {
   id: string;
 }
@@ -10,6 +11,7 @@ interface Details {
   description: string;
   downvotes?: number;
   upvotes?: number;
+  createdAt: string;
   id: string;
   image: string;
   title: string;

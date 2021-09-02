@@ -18,7 +18,7 @@ export interface User {
 }
 
 export interface Details {
-  comments: string[];
+  comments: Comment[];
   description: string;
   downvotes?: number;
   upvotes?: number;
@@ -28,4 +28,14 @@ export interface Details {
   title: string;
   user: User;
   __typename: string;
+}
+
+export interface Comment {
+  __typename: string;
+  id: string;
+  content: string;
+  createdAt: string;
+  downvotes?: number;
+  upvotes?: number;
+  user: User;
 }

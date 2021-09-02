@@ -35,7 +35,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
           <p>{details.description}</p>
           <h2>Comments:</h2>
           {!details.comments.length && <p>No comments yet...</p>}
-          {!!details.comments.length && <p>{details.comments}</p>}
+          {!!details.comments.length && <p>{details.comments[0].content}</p>}
         </>
       )}
     </main>

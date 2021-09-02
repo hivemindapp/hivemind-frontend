@@ -34,7 +34,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [postDescription, setDescription] = useState<string>('');
   const [imageURLS, setImageURLS] = useState<string>('');
   const [createPost, { data, loading, error }] = useMutation(ADD_POST, {
-    refetchQueries: [GET_ALL_POSTS],
+    refetchQueries: [GET_ALL_POSTS]
   });
 
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
@@ -47,15 +47,9 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           title: postTitle,
           description: postDescription,
           image: imageURLS,
-<<<<<<< HEAD
           userId: 9
         }
       }
-=======
-          userId: 5,
-        },
-      },
->>>>>>> 77abdba (Resolve merge conflicts)
     });
 
     if (data && !error && !loading) {
@@ -119,7 +113,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
             onImageRemove,
             isDragging,
             dragProps,
-            errors,
+            errors
           }) => (
             <div className="upload__image-wrapper">
               {errors && (
@@ -141,7 +135,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
                 onClick={onImageUpload}
                 {...dragProps}
               >
-                Click or drag here to upload
+                Click or drag image to upload
               </button>
               &nbsp;
               <button className="remove-img-btn" onClick={onImageRemoveAll}>

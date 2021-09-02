@@ -19,7 +19,6 @@
 }
 
 .close-modal:hover {
-  cursor: pointer;
   background-color: whitesmoke;
   transform: scale(1.1);
 }
@@ -57,13 +56,15 @@
 
 .post-submit-btn {
   margin: 1em;
-  cursor: pointer;
 }
 
 .post-submit-btn:hover {
-  cursor: pointer;
   background-color: whitesmoke;
   transform: scale(1.1);
+}
+
+button {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

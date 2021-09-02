@@ -3,25 +3,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
-
-export interface Post {
-  __typename: string;
-  createdAt: string;
-  id: string;
-  title: string;
-  description: string;
-  image?: string;
-  user: User;
-  upvotes?: number;
-  downvotes?: number;
-}
-
-export interface User {
-  __typename: string;
-  id: number;
-  username: string;
-  avatar: string;
-}
+import { PostDetails } from '../PostDetails/PostDetails';
 
 export const App: React.FC = () => {
   const [modal, toggleModal] = useState<boolean>(false);
@@ -57,6 +39,14 @@ export const App: React.FC = () => {
               {modal && <Modal closeModal={closeModal} />}
             </>
           )}
+        />
+
+        <Route
+          path='/posts/:id'
+          render={({ match }) => {
+            const { id } = match.params;
+            return <PostDetails id={id} />;
+          }}
         />
 
         <Route

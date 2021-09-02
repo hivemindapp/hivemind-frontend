@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Post } from '../App/App';
+import { Post } from '../../utils/types';
 import { Card } from '../Card/Card';
 import './Cards.css';
 import { GET_ALL_POSTS } from '../../index';
 import { useQuery } from '@apollo/client';
 
-interface CardsProps {}
-
-export const Cards: React.FC<CardsProps> = () => {
+export const Cards: React.FC = () => {
   const [posts, setPosts] = useState<Post[] | []>([]);
   const { loading, error, data } = useQuery(GET_ALL_POSTS);
 

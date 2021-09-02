@@ -15,6 +15,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
+// image is going to be imageUrls after Molly's PR
 export const GET_ALL_POSTS = gql`
   query {
     posts {
@@ -29,6 +30,37 @@ export const GET_ALL_POSTS = gql`
         id
         username
         avatar
+      }
+    }
+  }
+`;
+
+export const GET_POST_DETAILS = gql`
+  query post($id: ID!) {
+    post(id: $id) {
+      id
+      title
+      description
+      image
+      upvotes
+      downvotes
+      createdAt
+      user {
+        id
+        username
+        avatar
+      }
+      comments {
+        id
+        content
+        upvotes
+        downvotes
+        createdAt
+        user {
+          id
+          username
+          avatar
+        }
       }
     }
   }

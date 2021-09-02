@@ -1,10 +1,10 @@
 import React from 'react';
 import { formatDateCreated } from '../../utils/formatDateCreated';
 import './PostedBy.css';
-import { Post, Details } from '../../utils/types';
+import { Post, Details, CommentType } from '../../utils/types';
 
 interface PostedByProps {
-  post: Post | Details;
+  post: Post | Details | CommentType;
 }
 
 export const PostedBy: React.FC<PostedByProps> = ({ post }) => {

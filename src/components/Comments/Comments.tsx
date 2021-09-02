@@ -16,6 +16,7 @@ export const Comments: React.FC<CommentsProps> = ({ comments }) => {
 
   return (
     <section className='comment-section'>
+      <h2>Comments:</h2>
       {!!comments.length && makeCommentCards(comments)}
       {!comments.length && <p>No comments yet</p>}
     </section>

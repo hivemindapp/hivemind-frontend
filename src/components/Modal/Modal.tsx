@@ -40,22 +40,30 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
 
-    // instead of sending imageURLs we will send an array of signed IDs
-    createPost({
-      variables: {
-        input: {
-          title: postTitle,
-          description: postDescription,
-          image: imageURLS,
-          userId: 9
+    if (!postTitle || !postDescription) {
+      validateForm();
+    } else {
+      createPost({
+        variables: {
+          input: {
+            title: postTitle,
+            description: postDescription,
+            image: imageURLS,
+            userId: 5
+          }
         }
-      }
-    });
+      });
 
-    if (data && !error && !loading) {
-      closeModal(event);
-      clearState();
+      if (data && !error && !loading) {
+        closeModal(event);
+        clearState();
+      }
     }
+  };
+
+  const validateForm = () => {
+    const element = document.getElementById('formValidation');
+    element?.classList.remove('hidden');
   };
 
   const clearState = () => {
@@ -93,8 +101,16 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           type="text"
           className="post-title"
           placeholder="title"
+          maxLength={100}
           onChange={(event) => setTitle(event.target.value)}
+          required
         ></input>
+
+        <span className="error hidden" id="formValidation">
+          <i className="fas fa-exclamation-triangle error"></i>
+          <span>Please provide a title</span>
+        </span>
+
         <p className="post-prompt">Add an image:</p>
         <ImageUploading
           multiple
@@ -159,7 +175,14 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           className="post-description"
           placeholder="What's on your mind, busy bee?"
           onChange={(event) => setDescription(event.target.value)}
+          required
         ></input>
+
+        <span className="error hidden" id="formValidation">
+          <i className="fas fa-exclamation-triangle error"></i>
+          <span>Please provide a description</span>
+        </span>
+
         <input
           type="submit"
           id="submitButton"

@@ -67,6 +67,15 @@ button {
   cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-size: 70%;
+}
+
 @media screen and (min-width: 768px) {
 }
 

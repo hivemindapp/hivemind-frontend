@@ -54,10 +54,8 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
         }
       });
 
-      if (data && !error && !loading) {
-        closeModal(event);
-        clearState();
-      }
+      closeModal(event);
+      clearState();
     }
   };
 

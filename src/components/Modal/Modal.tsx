@@ -33,7 +33,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
   const [imageURLS, setImageURLS] = useState<string>('');
-  const [createPost, { data, loading, error }] = useMutation(ADD_POST, {
+  const [createPost] = useMutation(ADD_POST, {
     refetchQueries: [GET_ALL_POSTS]
   });
 

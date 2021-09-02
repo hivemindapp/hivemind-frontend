@@ -1,0 +1,8 @@
+.user-info {
+  display: flex;
+}
+
+.avatar {
+  height: 3em;
+  width: 3em;
+}

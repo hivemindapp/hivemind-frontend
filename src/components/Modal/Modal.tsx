@@ -13,7 +13,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [images, setImages] = useState<any>([]);
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
-  const [signedIds, setSignedIds] = useState<any>([]);
+  const [signedIds, setSignedIds] = useState<string[]>([]);
   const [createPost] = useMutation(ADD_POST, {
     refetchQueries: [GET_ALL_POSTS]
   });
@@ -68,32 +68,39 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     addUpdateIndex: number[] | undefined
   ) => {
     setImages(imageList);
-    // try to send the BE the whole blob
-
     // potentially get back an error when sending the whole blob
-    // successful response looks like a 30-40 char signedID
     // set that ID in state, and on submit, send the signedID(s) back as an array
     // send null or an empty array no matter what
   };
 
   useEffect(() => {
     if (images.length) {
-      images.forEach((blob: any) => {
-        createDirectUpload({
-          variables: {
-            input: {
-              attributes: {
-                filename: blob.file.name,
-                contentType: blob.file.type,
-                checksum: blob.data_url,
-                byteSize: blob.file.size
+      const upload = async () => {
+        images.forEach((blob: any) => {
+          createDirectUpload({
+            variables: {
+              input: {
+                attributes: {
+                  filename: blob.file.name,
+                  contentType: blob.file.type,
+                  checksum: blob.data_url,
+                  byteSize: blob.file.size
+                }
               }
             }
-          }
+          });
         });
-      });
+      };
+      upload();
     }
   }, [images, createDirectUpload]);
+
+  useEffect(() => {
+    if (data && !loading) {
+      let newId = data.createDirectUpload.directUpload.signedBlobId;
+      setSignedIds(signedIds => [...signedIds, newId]);
+    }
+  }, [data, loading]);
 
   return (
     <section className='modal-wrapper' id='modalWrapper'>
@@ -124,7 +131,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           onChange={onChange}
           maxNumber={maxNumber}
           dataURLKey='data_url'
-          acceptType={['jpg', 'png']}
+          acceptType={['jpg', 'png', 'jpeg']}
           maxFileSize={1000000}
         >
           {({

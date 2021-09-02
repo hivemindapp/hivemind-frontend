@@ -38,7 +38,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
           <h2>Title: {details.title}</h2>
           <img
             src={details.image}
-            alt={`User upload for post with title: ${details.title}`}
+            alt={`User upload to go with post titled: ${details.title}`}
           />
           <h2>Description</h2>
           <p>{details.description}</p>

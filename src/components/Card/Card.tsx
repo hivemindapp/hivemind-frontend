@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import 'dayjs';
 import './Card.css';
 import dayjs from 'dayjs';
-import { UserInfo } from '../UserInfo/UserInfo';
 
 interface CardProps {
   post: Post;
@@ -33,7 +32,16 @@ export const Card: React.FC<CardProps> = ({ post }) => {
     <NavLink to={`/posts/${post.id}`} className='nav-link'>
       <button className='card'>
         <h2>{post.title}</h2>
-        <UserInfo user={post.user} formatDateCreated={formatDateCreated} />
+        <div className='user-info'>
+          <img
+            className='avatar'
+            src={post.user.avatar}
+            alt={`${post.user.username}'s avatar`}
+          />
+          <p>
+            Posted by {post.user.username} {formatDateCreated()}
+          </p>
+        </div>
         <div className='preview-container'>
           {!!post.image && (
             <img className='post-img' src={post.image} alt={`${post.title}`} />

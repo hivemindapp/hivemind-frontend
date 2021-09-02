@@ -6,11 +6,21 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .card:hover {
   box-shadow: 5px 5px 5px grey;
   cursor: pointer;
+}
+
+.user-info {
+  display: flex;
+}
+
+.avatar {
+  height: 3em;
+  width: 3em;
 }
 
 .preview-container {

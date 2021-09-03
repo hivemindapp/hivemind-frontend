@@ -4,7 +4,7 @@ export interface Post {
   id: string;
   title: string;
   description: string;
-  image?: string;
+  imageUrls?: string[];
   user: User;
   upvotes?: number;
   downvotes?: number;
@@ -24,7 +24,7 @@ export interface Details {
   upvotes?: number;
   createdAt: string;
   id: string;
-  image: string;
+  imageUrls?: string[];
   title: string;
   user: User;
   __typename: string;

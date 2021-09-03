@@ -15,13 +15,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-// image is going to be imageUrls after Molly's PR
 export const GET_ALL_POSTS = gql`
   query {
     posts {
       id
       title
-      image
+      imageUrls
       description
       upvotes
       downvotes
@@ -41,7 +40,7 @@ export const GET_POST_DETAILS = gql`
       id
       title
       description
-      image
+      imageUrls
       upvotes
       downvotes
       createdAt
@@ -61,6 +60,36 @@ export const GET_POST_DETAILS = gql`
           username
           avatar
         }
+      }
+    }
+  }
+`;
+
+export const ADD_POST = gql`
+  mutation createPost($input: CreatePostInput!) {
+    createPost(input: $input) {
+      id
+      title
+      description
+      imageUrls
+      upvotes
+      downvotes
+      createdAt
+      updatedAt
+      user {
+        id
+        username
+        avatar
+      }
+    }
+  }
+`;
+
+export const CREATE_DIRECT_UPLOAD = gql`
+  mutation createDirectUpload($input: CreateDirectUploadInput!) {
+    createDirectUpload(input: $input) {
+      directUpload {
+        signedBlobId
       }
     }
   }

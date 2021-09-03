@@ -2,13 +2,13 @@ import { aliasPostsQuery } from '../utils/graphql-test-utils';
 
 describe('Modal Spec', () => {
   beforeEach(() => {
-    cy.intercept(
-      'POST',
-      'https://hivemind-staging-branch.herokuapp.com/graphql',
-      (req) => {
-        aliasPostsQuery(req, 'posts');
-      }
-    );
+    // cy.intercept(
+    //   'POST',
+    //   'https://hivemind-staging-branch.herokuapp.com/graphql',
+    //   (req) => {
+    //     aliasPostsQuery(req, 'posts');
+    //   }
+    // );
 
     cy.visit('http://localhost:3000/').get('.add-post-btn').click();
   });
@@ -43,25 +43,23 @@ describe('Modal Spec', () => {
   });
 
   it('Should be able to submit a post with a title, description, and image', () => {
-    // add title
-    // add description
-    //add image?
+    cy.get('.post-title')
+      .type('I love bees')
+      .should('have.value', 'I love bees')
+      .get('.post-description')
+      .type('Bees are my only friends')
+      .should('have.value', 'Bees are my only friends');
   });
 
   it('Should be able to submit a post without an image', () => {
-    // Add title and description
-    // Ensure first new post matches that description
+    cy.get('.post-title')
+      .type('I love bees')
+      .should('have.value', 'I love bees')
+      .get('.post-description')
+      .type('Bees are my only friends')
+      .should('have.value', 'Bees are my only friends')
+      .get('.post-submit-btn')
+      .click();
+    // cy.get('.card').first().should('be.visible');
   });
 });
-
-// cy.fixture('path/to/image.png')
-//   .as('logo')
-//   .get('input[type=file]')
-//   .then(function (el) {
-//     return Cypress.Blob.base64StringToBlob(this.logo, 'image/png').then(
-//       (blob) => {
-//         el[0].files[0] = blob;
-//         el[0].dispatchEvent(new Event('change', { bubbles: true }));
-//       }
-//     );
-//   });

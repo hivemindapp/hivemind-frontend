@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import './User.css';
+import { GET_ALL_POSTS } from '../../index';
+import { useQuery } from '@apollo/client';
 
 interface UserProps {}
 
 export const User: React.FC<UserProps> = () => {
   const [user, setUser] = useState<{}>({});
+  const { loading, error, data } = useQuery(GET_ALL_POSTS);
 
   const randomize = (data: []) => {
     let randomNum = Math.floor(Math.random() * data.length);

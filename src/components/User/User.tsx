@@ -4,7 +4,13 @@ import './User.css';
 interface UserProps {}
 
 export const User: React.FC<UserProps> = () => {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState<{}>({});
+
+  const randomize = (data: []) => {
+    let randomNum = Math.floor(Math.random() * data.length);
+    let randomUser = data[randomNum];
+    setUser(randomUser);
+  };
 
   return (
     <div>

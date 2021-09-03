@@ -10,6 +10,7 @@ interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
+  const maxNumber = 3;
   const [images, setImages] = useState<any>([]);
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
@@ -32,7 +33,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
             title: postTitle,
             description: postDescription,
             imageIds: signedIds,
-            userId: 13
+            userId: 17
           }
         }
       });
@@ -61,18 +62,14 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     setDescription('');
   };
 
-  const maxNumber = 3;
-
   const onChange = (
     imageList: ImageListType,
     addUpdateIndex: number[] | undefined
   ) => {
     setImages(imageList);
-    // potentially get back an error when sending the whole blob
-    // set that ID in state, and on submit, send the signedID(s) back as an array
-    // send null or an empty array no matter what
   };
 
+  // send the blob to the BE
   useEffect(() => {
     if (images.length) {
       const upload = async () => {
@@ -95,6 +92,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     }
   }, [images, createDirectUpload]);
 
+  // get successful response from the BE and set signedId(s) in state
   useEffect(() => {
     if (data && !loading) {
       let newId = data.createDirectUpload.directUpload.signedBlobId;
@@ -124,7 +122,9 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
           <span>Please provide a title</span>
         </span>
 
-        <p className='post-prompt'>Add an image:</p>
+        <p className='post-prompt'>
+          Add up to 3 images to your post, upload the nicest one first!
+        </p>
         <ImageUploading
           multiple
           value={images}
@@ -167,16 +167,16 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
                 Click or drag image to upload
               </button>
               &nbsp;
-              <button className='remove-img-btn' onClick={onImageRemoveAll}>
+              {/* <button className='remove-img-btn' onClick={onImageRemoveAll}>
                 Remove all images
-              </button>
+              </button> */}
               {imageList.map((image, index) => (
                 <div key={index} className='image-item'>
                   <img src={image['data_url']} alt='' width='100' />
-                  <div className='image-item__btn-wrapper'>
+                  {/* <div className='image-item__btn-wrapper'>
                     <button onClick={() => onImageUpdate(index)}>Update</button>
                     <button onClick={() => onImageRemove(index)}>Remove</button>
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>

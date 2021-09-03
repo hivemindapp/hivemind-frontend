@@ -41,4 +41,27 @@ describe('Modal Spec', () => {
     cy.get('.post-submit-btn').click();
     cy.get('.cards-container').should('be.visible');
   });
+
+  it('Should be able to submit a post with a title, description, and image', () => {
+    // add title
+    // add description
+    //add image?
+  });
+
+  it('Should be able to submit a post without an image', () => {
+    // Add title and description
+    // Ensure first new post matches that description
+  });
 });
+
+// cy.fixture('path/to/image.png')
+//   .as('logo')
+//   .get('input[type=file]')
+//   .then(function (el) {
+//     return Cypress.Blob.base64StringToBlob(this.logo, 'image/png').then(
+//       (blob) => {
+//         el[0].files[0] = blob;
+//         el[0].dispatchEvent(new Event('change', { bubbles: true }));
+//       }
+//     );
+//   });

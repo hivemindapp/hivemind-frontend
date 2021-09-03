@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
         <img src={bee} alt="round smiling bee" className="logo" />
       </NavLink>
       <h1>HiveMind</h1>
-      <NavLink to="/">Home</NavLink>
+      {/* <NavLink to="/">Home</NavLink> */}
       <User />
     </header>
   );

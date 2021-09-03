@@ -15,7 +15,7 @@ export const User: React.FC<UserProps> = () => {
   return (
     <div>
       {/* <img className="avatar" src={user.avatar} alt={`${user}'s avatar`} /> */}
-      <h3 className="user-greeting">Welcome Back...USER`</h3>
+      <h3 className="user-greeting">Welcome back my darling</h3>
     </div>
   );
 };

@@ -1,4 +1,14 @@
+.user-greeting {
+  margin-left: 25%;
+}
+
 .avatar {
   height: 3em;
   width: 3em;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1200px) {
 }

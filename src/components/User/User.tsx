@@ -7,7 +7,7 @@ const baseURL = 'https://hivemind-staging-branch.herokuapp.com';
 
 export const User: React.FC = () => {
   const [user, setUser] = useState<UserType | null>(null);
-  const { loading, error, data } = useQuery(GET_USER);
+  const { loading, data } = useQuery(GET_USER);
 
   useEffect(() => {
     if (!loading && data) {
@@ -19,13 +19,13 @@ export const User: React.FC = () => {
   return (
     <>
       {user && (
-        <div>
+        <div className="avatar-wrapper">
           <img
             className="avatar"
             src={`${baseURL}${user.avatar}`}
             alt={`${user}'s avatar`}
           />
-          <h3 className="user-greeting">Welcome back {user.username}</h3>
+          <h3 className="user-greeting">{user.username}</h3>
         </div>
       )}
     </>

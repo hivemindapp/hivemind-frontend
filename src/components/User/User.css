@@ -1,14 +1,36 @@
-.user-greeting {
-  margin-left: 25%;
+.avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 15%;
+  margin-top: 3%;
 }
 
 .avatar {
   height: 3em;
   width: 3em;
+  border-radius: 100px;
+}
+
+.user-greeting {
+  margin: 0;
 }
 
 @media screen and (min-width: 768px) {
 }
 
 @media screen and (min-width: 1200px) {
+  .avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 78%;
+    margin-top: 0;
+  }
+
+  .avatar {
+    height: 3em;
+    width: 3em;
+    border-radius: 100px;
+  }
 }

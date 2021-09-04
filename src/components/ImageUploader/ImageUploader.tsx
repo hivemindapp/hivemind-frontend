@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
 import './ImageUploader.css';
 
@@ -12,38 +12,13 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
   images
 }) => {
   const maxNumber = 3;
-  // const [images, setImages] = useState<any>([]);
 
   const onChange = (
     imageList: ImageListType,
     addUpdateIndex: number[] | undefined
   ) => {
-    // setImages(imageList);
     newImage(imageList);
   };
-
-  // send the blob to the BE
-  // useEffect(() => {
-  //   if (images.length) {
-  //     const upload = async () => {
-  //       images.forEach((blob: any) => {
-  //         createDirectUpload({
-  //           variables: {
-  //             input: {
-  //               attributes: {
-  //                 filename: blob.file.name,
-  //                 contentType: blob.file.type,
-  //                 checksum: blob.data_url,
-  //                 byteSize: blob.file.size
-  //               }
-  //             }
-  //           }
-  //         });
-  //       });
-  //     };
-  //     upload();
-  //   }
-  // }, [images, createDirectUpload]);
 
   return (
     <div className='ImageUploader'>
@@ -56,16 +31,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
         acceptType={['jpg', 'png', 'jpeg']}
         maxFileSize={1000000}
       >
-        {({
-          imageList,
-          onImageUpload,
-          onImageRemoveAll,
-          onImageUpdate,
-          onImageRemove,
-          isDragging,
-          dragProps,
-          errors
-        }) => (
+        {({ imageList, onImageUpload, isDragging, dragProps, errors }) => (
           <div className='upload__image-wrapper'>
             {errors && (
               <div>

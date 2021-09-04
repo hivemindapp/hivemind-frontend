@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import ImageUploading, { ImageListType } from 'react-images-uploading';
 import { useMutation } from '@apollo/client';
 import './Modal.css';
 import { GET_ALL_POSTS, ADD_POST, CREATE_DIRECT_UPLOAD } from '../../index';
@@ -23,12 +22,52 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
   const [createDirectUpload, { data, loading, error }] =
     useMutation(CREATE_DIRECT_UPLOAD);
 
+  const newImage = (blob: any) => {
+    setImages(blob);
+  };
+
+  // send the blob to the BE
+  useEffect(() => {
+    if (images.length) {
+      const upload = async () => {
+        images.forEach((blob: any) => {
+          createDirectUpload({
+            variables: {
+              input: {
+                attributes: {
+                  filename: blob.file.name,
+                  contentType: blob.file.type,
+                  checksum: blob.data_url,
+                  byteSize: blob.file.size
+                }
+              }
+            }
+          });
+        });
+      };
+      upload();
+    }
+  }, [images, createDirectUpload]);
+
+  // get successful response from the BE and set signedId(s) in state
+  useEffect(() => {
+    if (data && !loading) {
+      let newId = data.createDirectUpload.directUpload.signedBlobId;
+      setSignedIds(signedIds => [...signedIds, newId]);
+    }
+  }, [data, loading]);
+
   const addPost = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
 
     if (!postTitle || !postDescription) {
       validateForm();
     } else {
+      console.log(postTitle);
+      console.log(postDescription);
+      console.log(signedIds);
+      console.log(Number(user.id));
+
       createPost({
         variables: {
           input: {
@@ -64,48 +103,6 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
     setDescription('');
   };
 
-  const newImage = (blob: any) => {
-    setImages(blob);
-  };
-
-  // const onChange = (
-  //   imageList: ImageListType,
-  //   addUpdateIndex: number[] | undefined
-  // ) => {
-  //   setImages(imageList);
-  // };
-
-  // send the blob to the BE
-  useEffect(() => {
-    if (images.length) {
-      const upload = async () => {
-        images.forEach((blob: any) => {
-          createDirectUpload({
-            variables: {
-              input: {
-                attributes: {
-                  filename: blob.file.name,
-                  contentType: blob.file.type,
-                  checksum: blob.data_url,
-                  byteSize: blob.file.size
-                }
-              }
-            }
-          });
-        });
-      };
-      upload();
-    }
-  }, [images, createDirectUpload]);
-
-  // get successful response from the BE and set signedId(s) in state
-  useEffect(() => {
-    if (data && !loading) {
-      let newId = data.createDirectUpload.directUpload.signedBlobId;
-      setSignedIds(signedIds => [...signedIds, newId]);
-    }
-  }, [data, loading]);
-
   return (
     <section className='modal-wrapper' id='modalWrapper'>
       <section className='modal-content' id='modalContent'>
@@ -122,12 +119,10 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
           onChange={event => setTitle(event.target.value)}
           required
         ></textarea>
-
         <span className='error hidden' id='titleValidation'>
           <i className='fas fa-exclamation-triangle error'></i>
           <span>Please provide a title</span>
         </span>
-
         <p className='post-prompt'>
           Add up to 3 images to your post, upload the nicest one first!
         </p>

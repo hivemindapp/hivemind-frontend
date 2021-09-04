@@ -36,7 +36,7 @@ export const GET_ALL_POSTS = gql`
 
 export const GET_USER = gql`
   query {
-    user(id: 24) {
+    user(id: 23) {
       id
       username
       region

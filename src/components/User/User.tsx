@@ -11,7 +11,6 @@ export const User: React.FC = () => {
 
   useEffect(() => {
     if (!loading && data) {
-      console.log(data);
       setUser(data.user);
     }
   }, [data, loading]);

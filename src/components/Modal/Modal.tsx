@@ -11,15 +11,13 @@ interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
-  // const maxNumber = 3;
-  // const [images, setImages] = useState<any>([]);
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
   const [signedIds, setSignedIds] = useState<string[]>([]);
   const [createPost] = useMutation(ADD_POST, {
     refetchQueries: [GET_ALL_POSTS]
   });
-  const [createDirectUpload, { data, loading, error }] =
+  const [createDirectUpload, { data, loading }] =
     useMutation(CREATE_DIRECT_UPLOAD);
 
   const addPost = (event: React.MouseEvent<HTMLElement>) => {

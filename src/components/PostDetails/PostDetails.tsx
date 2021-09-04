@@ -30,7 +30,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
       {details && !loading && !error && (
         <main className='post-details-section'>
           <section className='post-content'>
-            <h2>Title: {details.title}</h2>
+            <h2>{details.title}</h2>
             <PostedBy post={details} />
             {details.imageUrls && (
               //want to have more than index 0 if there are multiple

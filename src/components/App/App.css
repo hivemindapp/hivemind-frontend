@@ -5,14 +5,16 @@
   box-sizing: border-box;
   min-height: 100vh;
   min-width: 100vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .add-post-button {
+  margin: auto;
+  margin-top: 2%;
   padding: 15px 25px;
-  font-size: 24px;
-  text-align: center;
-  outline: none;
-  color: #fff;
+  font-size: 20px;
+  color: black;
   background-color: #fbca00;
   border: none;
   border-radius: 15px;

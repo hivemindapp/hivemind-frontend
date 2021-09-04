@@ -4,7 +4,7 @@ export interface Post {
   id: string;
   title: string;
   description: string;
-  imageUrls?: string[];
+  imageUrls: string[];
   user: UserType;
   upvotes?: number;
   downvotes?: number;

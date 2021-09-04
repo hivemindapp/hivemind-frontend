@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './User.css';
 import { UserType } from '../../utils/types';
-
-// import { GET_USER } from '../../index';
-// import { useQuery } from '@apollo/client';
+import { GET_USER } from '../../index';
+import { useQuery } from '@apollo/client';
+const baseURL = 'https://hivemind-staging-branch.herokuapp.com';
 
 export const User: React.FC = () => {
-  const [user, setUser] = useState<UserType[] | []>([]);
-  // const { loading, error, data } = useQuery(GET_USER);
+  const [user, setUser] = useState<UserType | null>(null);
+  const { loading, error, data } = useQuery(GET_USER);
 
-  // const randomize = (data: []) => {
-  //   let randomNum = Math.floor(Math.random() * data.length);
-  //   let randomUser = data[randomNum];
-  //   setUser(randomUser);
-  // };
+  useEffect(() => {
+    if (!loading && data) {
+      console.log(data);
+      setUser(data.user);
+    }
+  }, [data, loading]);
 
   return (
-    <div>
-      {/* <img className="avatar" src={user.avatar} alt={`${user}'s avatar`} /> */}
-      <h3 className="user-greeting">Welcome back my darling</h3>
-    </div>
+    <>
+      {user && (
+        <div>
+          <img
+            className="avatar"
+            src={`${baseURL}${user.avatar}`}
+            alt={`${user}'s avatar`}
+          />
+          <h3 className="user-greeting">Welcome back {user.username}</h3>
+        </div>
+      )}
+    </>
   );
 };

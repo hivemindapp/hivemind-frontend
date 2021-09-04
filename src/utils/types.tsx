@@ -5,12 +5,12 @@ export interface Post {
   title: string;
   description: string;
   imageUrls?: string[];
-  user: User;
+  user: UserType;
   upvotes?: number;
   downvotes?: number;
 }
 
-export interface User {
+export interface UserType {
   __typename: string;
   id: number;
   username: string;
@@ -26,7 +26,7 @@ export interface Details {
   id: string;
   imageUrls?: string[];
   title: string;
-  user: User;
+  user: UserType;
   __typename: string;
 }
 
@@ -37,5 +37,5 @@ export interface CommentType {
   createdAt: string;
   downvotes?: number;
   upvotes?: number;
-  user: User;
+  user: UserType;
 }

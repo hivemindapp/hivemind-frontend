@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import './User.css';
-import { GET_ALL_POSTS } from '../../index';
-import { useQuery } from '@apollo/client';
+import { UserType } from '../../utils/types';
 
-interface UserProps {}
+// import { GET_USER } from '../../index';
+// import { useQuery } from '@apollo/client';
 
-export const User: React.FC<UserProps> = () => {
-  const [user, setUser] = useState<{}>({});
-  const { loading, error, data } = useQuery(GET_ALL_POSTS);
+export const User: React.FC = () => {
+  const [user, setUser] = useState<UserType[] | []>([]);
+  // const { loading, error, data } = useQuery(GET_USER);
 
-  const randomize = (data: []) => {
-    let randomNum = Math.floor(Math.random() * data.length);
-    let randomUser = data[randomNum];
-    setUser(randomUser);
-  };
+  // const randomize = (data: []) => {
+  //   let randomNum = Math.floor(Math.random() * data.length);
+  //   let randomUser = data[randomNum];
+  //   setUser(randomUser);
+  // };
 
   return (
     <div>

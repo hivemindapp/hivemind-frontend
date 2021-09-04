@@ -12,6 +12,7 @@ import './App.css';
 export const App: React.FC = () => {
   const [modal, toggleModal] = useState<boolean>(false);
   const [user, setUser] = useState<UserType | null>(null);
+  const [count, setCount] = useState<number>(0);
   const { loading, data, error } = useQuery(GET_USER);
 
   useEffect(() => {
@@ -20,16 +21,24 @@ export const App: React.FC = () => {
     }
   }, [data, loading]);
 
-  const closeModal = (event: any) => {
-    if (event.target.id === 'x') {
+  const closeModal = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    if (event.currentTarget.id === 'x') {
       toggleModal(false);
-    } else if (event.target.id === 'submitButton') {
+    } else if (event.currentTarget.id === 'submitButton') {
       toggleModal(false);
-    } else if (event.target.closest('section').id === 'modalContent') {
+    } else if (event.currentTarget.closest('section')!.id === 'modalContent') {
       return;
     }
     toggleModal(false);
   };
+
+  useEffect(() => {
+    if (modal) {
+      document.querySelector('html')!.classList.add('scroll-lock');
+    } else {
+      document.querySelector('html')!.classList.remove('scroll-lock');
+    }
+  }, [modal]);
 
   return (
     <main className='app'>

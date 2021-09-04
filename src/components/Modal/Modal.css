@@ -48,6 +48,10 @@
   transform: scale(1.1);
 }
 
+.scroll-lock {
+  overflow: hidden;
+}
+
 button {
   cursor: pointer;
 }

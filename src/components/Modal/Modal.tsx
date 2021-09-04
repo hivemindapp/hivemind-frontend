@@ -8,7 +8,7 @@ import { UserType, BlobType } from '../../utils/types';
 import { ImageListType } from 'react-images-uploading';
 
 interface ModalProps {
-  closeModal: (event: any) => void;
+  closeModal: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   user: UserType;
 }
 
@@ -110,7 +110,10 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
         <i
           className='fas fa-times close-modal'
           id='x'
-          onClick={(event: any) => closeModal(event)}
+          aria-label='close modal'
+          onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) =>
+            closeModal(event)
+          }
         ></i>
         <label className='post-prompt'>Create Post</label>
         <textarea

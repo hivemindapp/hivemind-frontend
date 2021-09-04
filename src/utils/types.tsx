@@ -44,7 +44,7 @@ export interface BlobType {
   data_url: string;
   file: {
     lastModified: number;
-    lastModifiedDate: any;
+    lastModifiedDate: Date;
     name: string;
     size: number;
     type: string;

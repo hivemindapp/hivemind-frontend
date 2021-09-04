@@ -64,11 +64,6 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
     if (!postTitle || !postDescription) {
       validateForm();
     } else {
-      console.log(postTitle);
-      console.log(postDescription);
-      console.log(signedIds);
-      console.log(Number(user.id));
-
       createPost({
         variables: {
           input: {
@@ -105,7 +100,13 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
   };
 
   return (
-    <section className='modal-wrapper' id='modalWrapper'>
+    <section
+      className='modal-wrapper'
+      id='modalWrapper'
+      onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) =>
+        closeModal(event)
+      }
+    >
       <section className='modal-content' id='modalContent'>
         <i
           className='fas fa-times close-modal'

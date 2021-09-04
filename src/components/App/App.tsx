@@ -28,8 +28,9 @@ export const App: React.FC = () => {
       toggleModal(false);
     } else if (event.currentTarget.closest('section')!.id === 'modalContent') {
       return;
+    } else if (event.target === event.currentTarget) {
+      toggleModal(false);
     }
-    toggleModal(false);
   };
 
   useEffect(() => {

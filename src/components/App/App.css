@@ -1,8 +1,30 @@
-.App {
+.app {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   min-height: 100vh;
   min-width: 100vw;
+}
+
+.add-post-button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  outline: none;
+  color: #fff;
+  background-color: #fbca00;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 6px black;
+}
+
+.add-post-button:hover {
+  background-color: #d3ab08;
+}
+
+.add-post-button:active {
+  background-color: #fbca00;
+  box-shadow: 0 5px black;
+  transform: translateY(4px);
 }

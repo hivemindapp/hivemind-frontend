@@ -20,7 +20,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
   const [createPost] = useMutation(ADD_POST, {
     refetchQueries: [GET_ALL_POSTS]
   });
-  const [createDirectUpload, { data, loading, error }] =
+  const [createDirectUpload, { data, loading }] =
     useMutation(CREATE_DIRECT_UPLOAD);
 
   const newImage = (blob: ImageListType) => {

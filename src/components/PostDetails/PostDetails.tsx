@@ -4,8 +4,8 @@ import { useQuery } from '@apollo/client';
 import { Details } from '../../utils/types';
 import { PostedBy } from '../PostedBy/PostedBy';
 import { Comments } from '../Comments/Comments';
+import { PostContent } from '../PostContent/PostContent';
 import './PostDetails.css';
-const baseURL = 'https://hivemind-staging-branch.herokuapp.com';
 
 interface PostDetailsProps {
   id: string;
@@ -32,15 +32,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
           <section className='post-content'>
             <h2>{details.title}</h2>
             <PostedBy post={details} />
-            {details.imageUrls && (
-              //want to have more than index 0 if there are multiple
-              <img
-                src={`${baseURL}${details.imageUrls[0]}`}
-                alt={`User upload to go with post titled: ${details.title}`}
-              />
-            )}
-            <h2>Description</h2>
-            <p>{details.description}</p>
+            <PostContent details={details} />
           </section>
           <Comments comments={details.comments} />
         </main>

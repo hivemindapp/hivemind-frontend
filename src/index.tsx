@@ -10,8 +10,10 @@ import {
   gql
 } from '@apollo/client';
 
+export const baseURL = 'https://hivemind-staging-branch.herokuapp.com';
+
 const client = new ApolloClient({
-  uri: 'https://hivemind-staging-branch.herokuapp.com/graphql',
+  uri: `${baseURL}/graphql`,
   cache: new InMemoryCache()
 });
 

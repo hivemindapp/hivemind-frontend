@@ -12,8 +12,7 @@ import './App.css';
 export const App: React.FC = () => {
   const [modal, toggleModal] = useState<boolean>(false);
   const [user, setUser] = useState<UserType | null>(null);
-  const [count, setCount] = useState<number>(0);
-  const { loading, data, error } = useQuery(GET_USER);
+  const { loading, data } = useQuery(GET_USER);
 
   useEffect(() => {
     if (!loading && data) {

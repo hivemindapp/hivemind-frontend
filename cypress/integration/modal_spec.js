@@ -47,15 +47,15 @@ describe('Modal Spec', () => {
       .should('have.value', 'Bees are my only friends');
   });
 
-  it('Should be able to submit a post without an image', () => {
-    cy.get('.post-title')
-      .type('I love bees')
-      .should('have.value', 'I love bees')
-      .get('.post-description')
-      .type('Bees are my only friends')
-      .should('have.value', 'Bees are my only friends')
-      .get('.post-submit-btn')
-      .click();
-    // cy.get('.card').first().should('be.visible');
-  });
+  // it('Should be able to submit a post without an image', () => {
+  //   cy.get('.post-title')
+  //     .type('I love bees')
+  //     .should('have.value', 'I love bees')
+  //     .get('.post-description')
+  //     .type('Bees are my only friends')
+  //     .should('have.value', 'Bees are my only friends')
+  //     .get('.post-submit-btn')
+  //     .click();
+  //   cy.get('.card').first().should('be.visible');
+  // });
 });

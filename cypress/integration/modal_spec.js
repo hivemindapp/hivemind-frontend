@@ -2,15 +2,15 @@ import { aliasPostsQuery } from '../utils/graphql-test-utils';
 
 describe('Modal Spec', () => {
   beforeEach(() => {
-    // cy.intercept(
-    //   'POST',
-    //   'https://hivemind-staging-branch.herokuapp.com/graphql',
-    //   (req) => {
-    //     aliasPostsQuery(req, 'posts');
-    //   }
-    // );
+    cy.intercept(
+      'POST',
+      'https://hivemind-staging-branch.herokuapp.com/graphql',
+      (req) => {
+        aliasPostsQuery(req, 'posts');
+      }
+    );
 
-    cy.visit('http://localhost:3000/').get('.add-post-btn').click();
+    cy.visit('http://localhost:3000/').get('.add-post-button').click();
   });
 
   it('Should open a modal upon clicking Add a Post!', () => {
@@ -27,10 +27,6 @@ describe('Modal Spec', () => {
 
   it('Should contain an input to add images', () => {
     cy.get('.upload__image-wrapper').should('be.visible');
-  });
-
-  it('Should contain an option to remove images', () => {
-    cy.get('.remove-img-btn').should('be.visible');
   });
 
   it('Should contain an submit button', () => {

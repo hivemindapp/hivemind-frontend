@@ -4,7 +4,8 @@ import './Modal.css';
 import { GET_ALL_POSTS, ADD_POST, CREATE_DIRECT_UPLOAD } from '../../index';
 import { useEffect } from 'react';
 import { ImageUploader } from '../ImageUploader/ImageUploader';
-import { UserType } from '../../utils/types';
+import { UserType, BlobType } from '../../utils/types';
+import { ImageListType } from 'react-images-uploading';
 
 interface ModalProps {
   closeModal: (event: any) => void;
@@ -12,7 +13,7 @@ interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
-  const [images, setImages] = useState<any>([]);
+  const [images, setImages] = useState([]);
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
   const [signedIds, setSignedIds] = useState<string[]>([]);
@@ -22,15 +23,15 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
   const [createDirectUpload, { data, loading, error }] =
     useMutation(CREATE_DIRECT_UPLOAD);
 
-  const newImage = (blob: any) => {
-    setImages(blob);
+  const newImage = (blob: ImageListType) => {
+    setImages(blob as never[]);
   };
 
   // send the blob to the BE
   useEffect(() => {
     if (images.length) {
       const upload = async () => {
-        images.forEach((blob: any) => {
+        images.forEach((blob: BlobType) => {
           createDirectUpload({
             variables: {
               input: {

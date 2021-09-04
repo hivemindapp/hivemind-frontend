@@ -3,8 +3,8 @@ import ImageUploading, { ImageListType } from 'react-images-uploading';
 import './ImageUploader.css';
 
 interface ImageUploaderProps {
-  newImage: (arg: any) => void;
-  images: any;
+  newImage: (blob: ImageListType) => void;
+  images: ImageListType[];
 }
 
 export const ImageUploader: React.FC<ImageUploaderProps> = ({
@@ -13,10 +13,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
 }) => {
   const maxNumber = 3;
 
-  const onChange = (
-    imageList: ImageListType,
-    addUpdateIndex: number[] | undefined
-  ) => {
+  const onChange = (imageList: ImageListType) => {
     newImage(imageList);
   };
 

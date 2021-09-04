@@ -3,53 +3,56 @@ import ImageUploading, { ImageListType } from 'react-images-uploading';
 import './ImageUploader.css';
 
 interface ImageUploaderProps {
-  createDirectUpload: ({}) => void;
+  newImage: (arg: any) => void;
+  images: any;
 }
 
 export const ImageUploader: React.FC<ImageUploaderProps> = ({
-  createDirectUpload
+  newImage,
+  images
 }) => {
-  const [images, setImages] = useState<any>([]);
   const maxNumber = 3;
+  // const [images, setImages] = useState<any>([]);
 
   const onChange = (
     imageList: ImageListType,
     addUpdateIndex: number[] | undefined
   ) => {
-    setImages(imageList);
+    // setImages(imageList);
+    newImage(imageList);
   };
 
   // send the blob to the BE
-  useEffect(() => {
-    if (images.length) {
-      const upload = async () => {
-        images.forEach((blob: any) => {
-          createDirectUpload({
-            variables: {
-              input: {
-                attributes: {
-                  filename: blob.file.name,
-                  contentType: blob.file.type,
-                  checksum: blob.data_url,
-                  byteSize: blob.file.size
-                }
-              }
-            }
-          });
-        });
-      };
-      upload();
-    }
-  }, [images, createDirectUpload]);
+  // useEffect(() => {
+  //   if (images.length) {
+  //     const upload = async () => {
+  //       images.forEach((blob: any) => {
+  //         createDirectUpload({
+  //           variables: {
+  //             input: {
+  //               attributes: {
+  //                 filename: blob.file.name,
+  //                 contentType: blob.file.type,
+  //                 checksum: blob.data_url,
+  //                 byteSize: blob.file.size
+  //               }
+  //             }
+  //           }
+  //         });
+  //       });
+  //     };
+  //     upload();
+  //   }
+  // }, [images, createDirectUpload]);
 
   return (
-    <div className="ImageUploader">
+    <div className='ImageUploader'>
       <ImageUploading
         multiple
         value={images}
         onChange={onChange}
         maxNumber={maxNumber}
-        dataURLKey="data_url"
+        dataURLKey='data_url'
         acceptType={['jpg', 'png', 'jpeg']}
         maxFileSize={1000000}
       >
@@ -63,7 +66,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
           dragProps,
           errors
         }) => (
-          <div className="upload__image-wrapper">
+          <div className='upload__image-wrapper'>
             {errors && (
               <div>
                 {errors.maxNumber && (
@@ -79,7 +82,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             )}
             <button
               style={isDragging ? { color: 'red' } : undefined}
-              className="drag-button"
+              className='drag-button'
               onClick={onImageUpload}
               {...dragProps}
             >
@@ -87,8 +90,8 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             </button>
             &nbsp;
             {imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img src={image['data_url']} alt="" width="100" />
+              <div key={index} className='image-item'>
+                <img src={image['data_url']} alt='' width='100' />
               </div>
             ))}
           </div>

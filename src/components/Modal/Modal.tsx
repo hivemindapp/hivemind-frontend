@@ -5,12 +5,15 @@ import './Modal.css';
 import { GET_ALL_POSTS, ADD_POST, CREATE_DIRECT_UPLOAD } from '../../index';
 import { useEffect } from 'react';
 import { ImageUploader } from '../ImageUploader/ImageUploader';
+import { UserType } from '../../utils/types';
 
 interface ModalProps {
   closeModal: (event: any) => void;
+  user: UserType;
 }
 
-export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
+export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
+  const [images, setImages] = useState<any>([]);
   const [postTitle, setTitle] = useState<string>('');
   const [postDescription, setDescription] = useState<string>('');
   const [signedIds, setSignedIds] = useState<string[]>([]);
@@ -32,7 +35,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
             title: postTitle,
             description: postDescription,
             imageIds: signedIds,
-            userId: 17
+            userId: Number(user.id)
           }
         }
       });
@@ -55,10 +58,14 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   };
 
   const clearState = () => {
-    // setImages([]);
+    setImages([]);
     setSignedIds([]);
     setTitle('');
     setDescription('');
+  };
+
+  const newImage = (blob: any) => {
+    setImages(blob);
   };
 
   // const onChange = (
@@ -69,77 +76,77 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   // };
 
   // send the blob to the BE
-  // useEffect(() => {
-  //   if (images.length) {
-  //     const upload = async () => {
-  //       images.forEach((blob: any) => {
-  //         createDirectUpload({
-  //           variables: {
-  //             input: {
-  //               attributes: {
-  //                 filename: blob.file.name,
-  //                 contentType: blob.file.type,
-  //                 checksum: blob.data_url,
-  //                 byteSize: blob.file.size
-  //               }
-  //             }
-  //           }
-  //         });
-  //       });
-  //     };
-  //     upload();
-  //   }
-  // }, [images, createDirectUpload]);
+  useEffect(() => {
+    if (images.length) {
+      const upload = async () => {
+        images.forEach((blob: any) => {
+          createDirectUpload({
+            variables: {
+              input: {
+                attributes: {
+                  filename: blob.file.name,
+                  contentType: blob.file.type,
+                  checksum: blob.data_url,
+                  byteSize: blob.file.size
+                }
+              }
+            }
+          });
+        });
+      };
+      upload();
+    }
+  }, [images, createDirectUpload]);
 
   // get successful response from the BE and set signedId(s) in state
   useEffect(() => {
     if (data && !loading) {
       let newId = data.createDirectUpload.directUpload.signedBlobId;
-      setSignedIds((signedIds) => [...signedIds, newId]);
+      setSignedIds(signedIds => [...signedIds, newId]);
     }
   }, [data, loading]);
 
   return (
-    <section className="modal-wrapper" id="modalWrapper">
-      <section className="modal-content" id="modalContent">
+    <section className='modal-wrapper' id='modalWrapper'>
+      <section className='modal-content' id='modalContent'>
         <i
-          className="fas fa-times close-modal"
-          id="x"
+          className='fas fa-times close-modal'
+          id='x'
           onClick={(event: any) => closeModal(event)}
         ></i>
-        <label className="post-prompt">Create Post</label>
+        <label className='post-prompt'>Create Post</label>
         <textarea
-          className="post-title"
-          placeholder="title"
+          className='post-title'
+          placeholder='title'
           maxLength={100}
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={event => setTitle(event.target.value)}
           required
         ></textarea>
 
-        <span className="error hidden" id="titleValidation">
-          <i className="fas fa-exclamation-triangle error"></i>
+        <span className='error hidden' id='titleValidation'>
+          <i className='fas fa-exclamation-triangle error'></i>
           <span>Please provide a title</span>
         </span>
 
-        <p className="post-prompt">
+        <p className='post-prompt'>
           Add up to 3 images to your post, upload the nicest one first!
         </p>
-        <ImageUploader createDirectUpload={createDirectUpload} />
-        <p className="post-prompt">Add a description:</p>
+        <ImageUploader newImage={newImage} images={images} />
+        <p className='post-prompt'>Add a description:</p>
         <textarea
-          className="post-description"
+          className='post-description'
           placeholder="What's on your mind, busy bee?"
-          onChange={(event) => setDescription(event.target.value)}
+          onChange={event => setDescription(event.target.value)}
           required
         ></textarea>
-        <span className="error hidden" id="descValidation">
-          <i className="fas fa-exclamation-triangle error"></i>
+        <span className='error hidden' id='descValidation'>
+          <i className='fas fa-exclamation-triangle error'></i>
           <span>Please provide a description</span>
         </span>
         <input
-          type="submit"
-          id="submitButton"
-          className="post-submit-btn"
+          type='submit'
+          id='submitButton'
+          className='post-submit-btn'
           onClick={(event: React.MouseEvent<HTMLElement>) => addPost(event)}
         ></input>
       </section>

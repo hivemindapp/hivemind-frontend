@@ -7,7 +7,7 @@ const baseURL = 'https://hivemind-staging-branch.herokuapp.com';
 
 export const User: React.FC = () => {
   const [user, setUser] = useState<UserType | null>(null);
-  const { loading, data } = useQuery(GET_USER);
+  const { loading, data, error } = useQuery(GET_USER);
 
   useEffect(() => {
     if (!loading && data) {

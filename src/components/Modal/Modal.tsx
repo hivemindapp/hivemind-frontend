@@ -17,7 +17,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [createPost] = useMutation(ADD_POST, {
     refetchQueries: [GET_ALL_POSTS]
   });
-  const [createDirectUpload, { data, loading }] =
+  const [createDirectUpload, { data, loading, error }] =
     useMutation(CREATE_DIRECT_UPLOAD);
 
   const addPost = (event: React.MouseEvent<HTMLElement>) => {

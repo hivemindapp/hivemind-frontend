@@ -6,22 +6,34 @@ header {
   position: sticky;
   top: 0;
   z-index: 1;
+  justify-content: space-between;
 }
 
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+}
 .logo {
   height: 5em;
   width: 5em;
   margin-left: 1em;
+  text-decoration: none;
 }
 
-.logo:hover {
-  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+.hover {
+  animation: shake 0.9s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 h1 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   padding-left: 0.25em;
   font-size: 300%;
+  color: black;
 }
 
 @keyframes shake {

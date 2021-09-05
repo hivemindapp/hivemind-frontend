@@ -44,17 +44,19 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
               </div>
             )}
             <button
-              style={isDragging ? { color: 'red' } : undefined}
+              style={isDragging ? { backgroundColor: '#bfbfbf' } : undefined}
               className='drag-button'
               onClick={onImageUpload}
               {...dragProps}
             >
-              Click or drag image to upload
+              {isDragging
+                ? "Drop it like it's hot!"
+                : 'Click or drag to upload'}
             </button>
             &nbsp;
             {imageList.map((image, index) => (
               <div key={index} className='image-item'>
-                <img src={image['data_url']} alt='' width='100' />
+                <img src={image['data_url']} alt='upload preview' width='150' />
               </div>
             ))}
           </div>

@@ -29,7 +29,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
         maxFileSize={1000000}
       >
         {({ imageList, onImageUpload, isDragging, dragProps, errors }) => (
-          <div className='upload__image-wrapper'>
+          <div className='upload-image-wrapper'>
             {errors && (
               <div>
                 {errors.maxNumber && (

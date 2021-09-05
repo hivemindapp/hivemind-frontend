@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import './Modal.css';
 import { GET_ALL_POSTS, ADD_POST, CREATE_DIRECT_UPLOAD } from '../../index';
 import { useEffect } from 'react';
 import { ImageUploader } from '../ImageUploader/ImageUploader';
 import { UserType, BlobType } from '../../utils/types';
 import { ImageListType } from 'react-images-uploading';
+import './Modal.css';
 
 interface ModalProps {
   closeModal: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;

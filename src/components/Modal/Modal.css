@@ -16,16 +16,15 @@
   padding: 0.25em;
   margin-top: 1em;
 }
-ß .close-modal:hover {
-  background-color: whitesmoke;
-  transform: scale(1.1);
+
+.close-modal:hover {
+  background-color: lightgray;
 }
 
 .modal-content {
-  margin: auto;
   background-color: white;
-  border: 0.25em solid black;
-  margin: 1em;
+  border: 2px solid black;
+  margin: 1.5em;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -55,18 +54,35 @@ button {
   cursor: pointer;
 }
 
+.post-submit-btn {
+  margin: 1em;
+}
+
+.post-submit-btn:hover {
+  background-color: whitesmoke;
+  transform: scale(1.1);
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-size: 70%;
+}
+
+input {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
 @media screen and (min-width: 768px) {
 }
 
 @media screen and (min-width: 1200px) {
-  .modal-wrapper {
-    position: fixed;
-    z-index: 1;
-    padding-top: 7em;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-  }
 }

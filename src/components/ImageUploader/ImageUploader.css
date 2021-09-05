@@ -1,59 +1,11 @@
-.modal-content {
-  margin: auto;
-  background-color: white;
-  border: 0.25em solid black;
-  margin: 1em;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  padding-left: 1em;
-  padding-right: 1em;
+.upload-image-wrapper {
 }
 
-.create-post {
-  margin-bottom: 1em;
-  font-weight: bolder;
-}
-
-.post-prompt {
-  font-size: large;
+.drag-button {
 }
 
 .image-item {
   margin-top: 1em;
-}
-
-.post-description {
-  width: 100%;
-  text-align: start;
-  padding-bottom: 3em;
-}
-
-.post-submit-btn {
-  margin: 1em;
-}
-
-.post-submit-btn:hover {
-  background-color: whitesmoke;
-  transform: scale(1.1);
-}
-
-button {
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-.error {
-  color: red;
-  font-size: 70%;
-}
-
-input {
-  word-wrap: break-word;
-  word-break: break-all;
 }
 
 @media screen and (min-width: 768px) {

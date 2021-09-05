@@ -11,7 +11,8 @@ export const User: React.FC<UserProps> = ({ user }) => {
       {user && (
         <div className='avatar-wrapper'>
           <img
-            className='avatar'
+            className='avatar header-av'
+            id='headerAvatar'
             src={`${baseURL}${user.avatar}`}
             alt={`${user}'s avatar`}
           />

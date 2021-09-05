@@ -1,14 +1,16 @@
 .post-details-section {
-  display: grid;
-  grid-template-areas:
-    'content'
-    'comments';
-  gap: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .post-details-section {
+    flex-direction: column;
+  }
 }
 
 @media screen and (min-width: 1200px) {
   .post-details-section {
-    grid-template-areas: 'content comments';
-    gap: 2em;
+    flex-direction: row;
   }
 }

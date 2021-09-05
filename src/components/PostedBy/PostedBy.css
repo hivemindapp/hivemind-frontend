@@ -1,8 +1,12 @@
 .user-info {
   display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .avatar {
   height: 3em;
   width: 3em;
+  border-radius: 100px;
+  margin-right: 10px;
 }

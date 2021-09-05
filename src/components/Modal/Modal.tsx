@@ -116,29 +116,26 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
             closeModal(event)
           }
         ></i>
-        <label className='post-prompt'>Create Post</label>
+        <h3>Create Post</h3>
         <textarea
-          className='post-title'
-          placeholder='title'
+          className='title-input'
+          placeholder='Title'
           maxLength={100}
           onChange={event => setTitle(event.target.value)}
           required
-        ></textarea>
+        />
         <span className='error hidden' id='titleValidation'>
           <i className='fas fa-exclamation-triangle error'></i>
           <span>Please provide a title</span>
         </span>
-        <p className='post-prompt'>
-          Add up to 3 images to your post, upload the nicest one first!
-        </p>
+        <h3>Add up to 3 images to your post, upload the nicest one first!</h3>
         <ImageUploader newImage={newImage} images={images} />
-        <p className='post-prompt'>Add a description:</p>
+        <h3>Add a description:</h3>
         <textarea
-          className='post-description'
           placeholder="What's on your mind, busy bee?"
           onChange={event => setDescription(event.target.value)}
           required
-        ></textarea>
+        />
         <span className='error hidden' id='descValidation'>
           <i className='fas fa-exclamation-triangle error'></i>
           <span>Please provide a description</span>
@@ -148,7 +145,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
           id='submitButton'
           className='post-submit-btn'
           onClick={(event: React.MouseEvent<HTMLElement>) => addPost(event)}
-        ></input>
+        />
       </section>
     </section>
   );

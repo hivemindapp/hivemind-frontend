@@ -1,12 +1,19 @@
 .post-content {
-  border: 1px solid black;
   margin: 1em;
   padding: 1em;
+  border: 5px solid #fbab2b;
+}
+
+.post-content > img {
   width: 100%;
+  max-height: 50em;
+  object-fit: contain;
+}
+
+.description-wrapper {
+  border-top: 1px solid black;
+  margin-top: 1em;
 }
 
 @media screen and (min-width: 1200px) {
-  .post-content > img {
-    width: 100%;
-  }
 }

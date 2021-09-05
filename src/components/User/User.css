@@ -10,11 +10,15 @@
 }
 
 .user-greeting {
-  margin: 0;
-  text-align: center;
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
+  .user-greeting {
+    display: block;
+    margin: 0;
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 1200px) {

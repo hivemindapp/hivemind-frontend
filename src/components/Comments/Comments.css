@@ -1,8 +1,7 @@
 .comment-section {
   margin: 1em;
   padding: 1em;
-  border: 1px solid red;
   display: flex;
-  width: 100%;
   flex-direction: column;
+  border: 5px solid #fbab2b;
 }

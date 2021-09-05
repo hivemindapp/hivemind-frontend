@@ -25,11 +25,11 @@ html {
 }
 
 .add-post-button:hover {
-  background-color: #dfb509;
+  background-color: #e7ba00;
 }
 
 .add-post-button:active {
-  background-color: #fbca00;
+  background-color: #e7ba00;
   box-shadow: 0 5px black;
   transform: translateY(4px);
 }

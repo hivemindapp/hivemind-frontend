@@ -1,8 +1,8 @@
 .card {
   margin: 0;
-  border: 2px solid black;
+  border: 2px solid grey;
   padding: 0.5em;
-  background-color: whitesmoke;
+  background-color: #f0f0f0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 .card:hover {
-  box-shadow: 5px 5px 5px grey;
+  box-shadow: 5px 5px 0px #fbab2b;
   cursor: pointer;
 }
 
@@ -21,8 +21,10 @@
 }
 
 .preview-container p {
-  border: 1px solid grey;
+  background-color: white;
+  min-height: 5em;
   padding: 1em;
+  margin: 1.5em;
 }
 
 .post-img {

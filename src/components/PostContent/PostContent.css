@@ -1,7 +1,8 @@
 .post-content {
   margin: 1em;
   padding: 1em;
-  border: 5px solid #fbab2b;
+  border: 3px solid #fbab2b;
+  background-color: rgba(251, 202, 0, 0.4);
 }
 
 .post-content > img {
@@ -16,4 +17,7 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .post-content {
+    width: 100%;
+  }
 }

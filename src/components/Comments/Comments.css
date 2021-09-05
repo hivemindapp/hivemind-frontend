@@ -3,5 +3,11 @@
   padding: 1em;
   display: flex;
   flex-direction: column;
-  border: 5px solid #fbab2b;
+  background-color: lightgray;
+}
+
+@media screen and (min-width: 1200px) {
+  .comment-section {
+    width: 100%;
+  }
 }

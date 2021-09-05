@@ -10,7 +10,7 @@ describe('Modal Spec', () => {
       }
     );
 
-    cy.visit('http://localhost:3000/').get('.add-post-btn').click();
+    cy.visit('http://localhost:3000/').get('.add-post-button').click();
   });
 
   it('Should open a modal upon clicking Add a Post!', () => {
@@ -29,10 +29,6 @@ describe('Modal Spec', () => {
     cy.get('.upload__image-wrapper').should('be.visible');
   });
 
-  it('Should contain an option to remove images', () => {
-    cy.get('.remove-img-btn').should('be.visible');
-  });
-
   it('Should contain an submit button', () => {
     cy.get('.post-submit-btn').should('be.visible');
   });
@@ -41,4 +37,25 @@ describe('Modal Spec', () => {
     cy.get('.post-submit-btn').click();
     cy.get('.cards-container').should('be.visible');
   });
+
+  it('Should be able to submit a post with a title, description, and image', () => {
+    cy.get('.post-title')
+      .type('I love bees')
+      .should('have.value', 'I love bees')
+      .get('.post-description')
+      .type('Bees are my only friends')
+      .should('have.value', 'Bees are my only friends');
+  });
+
+  // it('Should be able to submit a post without an image', () => {
+  //   cy.get('.post-title')
+  //     .type('I love bees')
+  //     .should('have.value', 'I love bees')
+  //     .get('.post-description')
+  //     .type('Bees are my only friends')
+  //     .should('have.value', 'Bees are my only friends')
+  //     .get('.post-submit-btn')
+  //     .click();
+  //   cy.get('.card').first().should('be.visible');
+  // });
 });

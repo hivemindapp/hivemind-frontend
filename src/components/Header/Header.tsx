@@ -1,12 +1,18 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import bee from '../../images/bee.png';
 import './Header.css';
+import { User } from '../User/User';
 
 export const Header: React.FC = () => {
   return (
     <header>
-      <img src={bee} alt='round smiling bee' className='logo' />
+      <NavLink to="/">
+        <img src={bee} alt="round smiling bee" className="logo" />
+      </NavLink>
       <h1>HiveMind</h1>
+      {/* <NavLink to="/">Home</NavLink> */}
+      <User />
     </header>
   );
 };

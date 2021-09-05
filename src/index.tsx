@@ -34,6 +34,18 @@ export const GET_ALL_POSTS = gql`
   }
 `;
 
+export const GET_USER = gql`
+  query {
+    user(id: 23) {
+      id
+      username
+      region
+      biography
+      avatar
+    }
+  }
+`;
+
 export const GET_POST_DETAILS = gql`
   query post($id: ID!) {
     post(id: $id) {

@@ -11,19 +11,19 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ post }) => {
   const { id, title, imageUrls, description } = post;
   return (
-    <NavLink to={`/posts/${id}`} className='nav-link'>
-      <button className='card'>
+    <NavLink to={`/posts/${id}`} className="nav-link">
+      <button className="card">
         <h2>{title}</h2>
         <PostedBy post={post} />
-        <div className='preview-container'>
-          {!!imageUrls && (
+        <div className="preview-container">
+          {!!imageUrls.length && (
             <img
-              className='post-img'
+              className="post-img"
               src={`${baseURL}${imageUrls[0]}`}
               alt={`${title}`}
             />
           )}
-          {!imageUrls && <p className='post-desc'>{description}</p>}
+          {!imageUrls.length && <p className="post-desc">{description}</p>}
         </div>
       </button>
     </NavLink>

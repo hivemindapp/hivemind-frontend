@@ -11,11 +11,38 @@ header {
 .logo {
   height: 5em;
   width: 5em;
-  margin-left: 2em;
+  margin-left: 1em;
+}
+
+.logo:hover {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 h1 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   padding-left: 0.25em;
   font-size: 300%;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

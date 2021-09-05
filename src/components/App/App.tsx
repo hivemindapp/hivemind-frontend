@@ -4,6 +4,7 @@ import { Header } from '../Header/Header';
 import { Cards } from '../Cards/Cards';
 import { Modal } from '../Modal/Modal';
 import { PostDetails } from '../PostDetails/PostDetails';
+import './App.css';
 
 export const App: React.FC = () => {
   const [modal, toggleModal] = useState<boolean>(false);
@@ -20,7 +21,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <main>
+    <main className="app">
       <Header />
 
       <Switch>
@@ -30,7 +31,7 @@ export const App: React.FC = () => {
           render={() => (
             <>
               <button
-                className="add-post-btn"
+                className="add-post-button"
                 onClick={() => toggleModal(!modal)}
               >
                 Add a post!
@@ -42,7 +43,7 @@ export const App: React.FC = () => {
         />
 
         <Route
-          path='/posts/:id'
+          path="/posts/:id"
           render={({ match }) => {
             const { id } = match.params;
             return <PostDetails id={id} />;

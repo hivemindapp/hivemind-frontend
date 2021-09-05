@@ -133,14 +133,14 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
           onChange={event => setDescription(event.target.value)}
           required
         />
-        <p className='add-images-prompt'>
-          Add up to 3 images to your post, upload the nicest one first!
-        </p>
-        <ImageUploader newImage={newImage} images={images} />
         <span className='error hidden' id='descValidation'>
           <i className='fas fa-exclamation-triangle error'></i>
           <span>Please provide a description</span>
         </span>
+        <p className='add-images-prompt'>
+          Add up to 3 images to your post, upload the nicest one first!
+        </p>
+        <ImageUploader newImage={newImage} images={images} />
         <input
           type='submit'
           id='submitButton'

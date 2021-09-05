@@ -33,13 +33,19 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             {errors && (
               <div>
                 {errors.maxNumber && (
-                  <span>Number of selected images exceed maxNumber</span>
+                  <span className='error'>
+                    Number of selected images exceed maxNumber
+                  </span>
                 )}
                 {errors.acceptType && (
-                  <span>Your selected file type is not allowed</span>
+                  <span className='error'>
+                    Your selected file type is not allowed
+                  </span>
                 )}
                 {errors.maxFileSize && (
-                  <span>Selected file size exceed maxFileSize</span>
+                  <span className='error'>
+                    Selected file size exceed maxFileSize
+                  </span>
                 )}
               </div>
             )}

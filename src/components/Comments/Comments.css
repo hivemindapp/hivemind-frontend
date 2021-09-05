@@ -3,7 +3,6 @@
   padding: 1em;
   display: flex;
   flex-direction: column;
-  background-color: lightgray;
 }
 
 @media screen and (min-width: 1200px) {

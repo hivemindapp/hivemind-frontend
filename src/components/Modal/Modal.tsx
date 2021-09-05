@@ -116,7 +116,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
             closeModal(event)
           }
         ></i>
-        <h3>Create Post</h3>
+        <h3 className='create-post'>Create Post</h3>
         <textarea
           className='title-input'
           placeholder='Title'
@@ -128,14 +128,15 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
           <i className='fas fa-exclamation-triangle error'></i>
           <span>Please provide a title</span>
         </span>
-        <h3>Add up to 3 images to your post, upload the nicest one first!</h3>
-        <ImageUploader newImage={newImage} images={images} />
-        <h3>Add a description:</h3>
         <textarea
           placeholder="What's on your mind, busy bee?"
           onChange={event => setDescription(event.target.value)}
           required
         />
+        <p className='add-images-prompt'>
+          Add up to 3 images to your post, upload the nicest one first!
+        </p>
+        <ImageUploader newImage={newImage} images={images} />
         <span className='error hidden' id='descValidation'>
           <i className='fas fa-exclamation-triangle error'></i>
           <span>Please provide a description</span>

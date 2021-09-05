@@ -2,23 +2,32 @@ import React from 'react';
 import './PostContent.css';
 import { Details } from '../../utils/types';
 import { baseURL } from '../../index';
+import { PostedBy } from '../PostedBy/PostedBy';
 
 interface PostContentProps {
   details: Details;
 }
 
 export const PostContent: React.FC<PostContentProps> = ({ details }) => {
-  return (
-    <>
-      {details.imageUrls && (
-        //want to have more than index 0 if there are multiple
+  const renderImages = (imageUrls: string[]) => {
+    return imageUrls.map(url => {
+      return (
         <img
-          src={`${baseURL}${details.imageUrls[0]}`}
+          src={`${baseURL}${url}`}
           alt={`User upload to go with post titled: ${details.title}`}
         />
-      )}
-      <h2>Description</h2>
-      <p>{details.description}</p>
+      );
+    });
+  };
+  return (
+    <>
+      <section className='post-content'>
+        <h2>{details.title}</h2>
+        <PostedBy post={details} />
+        {details.imageUrls.length && renderImages(details.imageUrls)}
+        <h2>Description</h2>
+        <p>{details.description}</p>
+      </section>
     </>
   );
 };

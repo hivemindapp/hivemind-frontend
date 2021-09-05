@@ -3,20 +3,12 @@
   grid-template-areas:
     'content'
     'comments';
-}
-
-.post-content {
-  grid-area: 'content';
-  border: 1px solid blue;
-  margin: 1em;
-}
-
-@media screen and (min-width: 768px) {
+  gap: 2em;
 }
 
 @media screen and (min-width: 1200px) {
   .post-details-section {
-    display: grid;
     grid-template-areas: 'content comments';
+    gap: 2em;
   }
 }

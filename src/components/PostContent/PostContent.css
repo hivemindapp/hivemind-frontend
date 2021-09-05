@@ -1,0 +1,17 @@
+.post-content {
+  grid-area: 'content';
+  border: 1px solid black;
+  margin: 1em;
+}
+
+@media screen and (min-width: 1200px) {
+  .post-content {
+    grid-area: 'content';
+    width: 100%;
+    padding: 1em;
+  }
+
+  .post-content > img {
+    width: 100%;
+  }
+}

@@ -1,9 +1,12 @@
 .comment-section {
   margin: 1em;
   padding: 1em;
-  border: 1px solid red;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-area: 'comments';
-  gap: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1200px) {
+  .comment-section {
+    width: 100%;
+  }
 }

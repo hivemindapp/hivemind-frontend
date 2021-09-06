@@ -1,0 +1,23 @@
+.post-content {
+  margin: 1em;
+  padding: 1em;
+  border: 3px solid #fbab2b;
+  background-color: rgba(251, 202, 0, 0.4);
+}
+
+.post-content > img {
+  width: 100%;
+  max-height: 50em;
+  object-fit: contain;
+}
+
+.description-wrapper {
+  border-top: 1px solid black;
+  margin-top: 1em;
+}
+
+@media screen and (min-width: 1200px) {
+  .post-content {
+    width: 100%;
+  }
+}

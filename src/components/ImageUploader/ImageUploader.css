@@ -1,63 +1,9 @@
-.modal-content {
-  margin: auto;
-  background-color: white;
-  border: 0.25em solid black;
-  margin: 1em;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-.create-post {
-  margin-bottom: 1em;
-  font-weight: bolder;
-}
-
-.post-prompt {
-  font-size: large;
+.drag-button {
+  padding: 1em;
+  width: 20em;
+  background-color: lightgray;
 }
 
 .image-item {
-  margin-top: 1em;
-}
-
-.post-description {
-  width: 100%;
-  text-align: start;
-  padding-bottom: 3em;
-}
-
-.post-submit-btn {
-  margin: 1em;
-}
-
-.post-submit-btn:hover {
-  background-color: whitesmoke;
-  transform: scale(1.1);
-}
-
-button {
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-.error {
-  color: red;
-  font-size: 70%;
-}
-
-input {
-  word-wrap: break-word;
-  word-break: break-all;
-}
-
-@media screen and (min-width: 768px) {
-}
-
-@media screen and (min-width: 1200px) {
+  margin-top: 0.5em;
 }

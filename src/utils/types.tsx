@@ -24,7 +24,7 @@ export interface Details {
   upvotes?: number;
   createdAt: string;
   id: string;
-  imageUrls?: string[];
+  imageUrls: string[];
   title: string;
   user: UserType;
   __typename: string;
@@ -38,4 +38,16 @@ export interface CommentType {
   downvotes?: number;
   upvotes?: number;
   user: UserType;
+}
+
+export interface BlobType {
+  data_url: string;
+  file: {
+    lastModified: number;
+    lastModifiedDate: Date;
+    name: string;
+    size: number;
+    type: string;
+    webkitRelativePath: string;
+  };
 }

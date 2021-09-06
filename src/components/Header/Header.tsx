@@ -1,18 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import bee from '../../images/bee.png';
 import './Header.css';
 import { User } from '../User/User';
+import { UserType } from '../../utils/types';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  user: UserType | null;
+}
+
+export const Header: React.FC<HeaderProps> = ({ user }) => {
+  const [inHover, setHover] = useState(false);
+
   return (
     <header>
-      <NavLink to="/">
-        <img src={bee} alt="round smiling bee" className="logo" />
+      <NavLink
+        to='/'
+        className='link'
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        {inHover && (
+          <div className='logo-wrapper'>
+            <img src={bee} alt='round smiling bee' className='logo hover' />
+            <h1>HiveMind</h1>
+          </div>
+        )}
+        {!inHover && (
+          <div className='logo-wrapper'>
+            <img src={bee} alt='round smiling bee' className='logo' />
+            <h1>HiveMind</h1>
+          </div>
+        )}
       </NavLink>
-      <h1>HiveMind</h1>
-      {/* <NavLink to="/">Home</NavLink> */}
-      <User />
+      {user && <User user={user} />}
     </header>
   );
 };

@@ -1,34 +1,41 @@
 {
-  "userPosts": [
-    {
-      "id": "60",
-      "title": "Non-euclidean lurk hideous swarthy ululate foetid eldritch amorphous squamous.",
-      "imageUrls": [
-        "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--38da58501535f6853c4002a2db6fc41ab09b7a32/test-image1.jpg"
-      ],
-      "upvotes": 5,
-      "downvotes": 7,
-      "createdAt": "2021-09-01T23:31:31Z",
-      "user": {
-        "id": "21",
-        "username": "Wilibald Bolger",
-        "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d0ed00eaf7addd2df76acd5b397be3154442de2/test-image2.jpg"
-      }
+  "post": {
+    "id": "105",
+    "title": "Hideous stench gibbering decadent mortal lurk.",
+    "description": "Fainted tenebrous decadent effulgence. Iridescence unutterable immemorial. Gibbering tentacles daemoniac unnamable unmentionable gambrel. Stench effulgence tentacles.",
+    "imageUrls": [
+      "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBldz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--496b761a31307334900d6ad71f3554d16cb1ef75/test-image5.jpg"
+    ],
+    "upvotes": 1,
+    "downvotes": 6,
+    "user": {
+      "id": "32",
+      "username": "Sagroth",
+      "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBiUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c42ed047cc433842922d489f6e99a68cb8577604/test-image4.jpg"
     },
-    {
-      "id": "59",
-      "title": "Furtive effulgence cat amorphous.",
-      "imageUrls": [
-        "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4026d6a520e3a63d6b344d1e3d81aa54ba9c05c1/test-image1.jpg"
-      ],
-      "upvotes": 5,
-      "downvotes": 3,
-      "createdAt": "2021-09-01T23:31:31Z",
-      "user": {
-        "id": "21",
-        "username": "Wilibald Bolger",
-        "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d0ed00eaf7addd2df76acd5b397be3154442de2/test-image2.jpg"
+    "comments": [
+      {
+        "id": "284",
+        "content": "Repression makes a religion flourish.",
+        "upvotes": 5,
+        "downvotes": 9,
+        "user": {
+          "id": "35",
+          "username": "Ar-Sakalthôr",
+          "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBjQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ead6b14acd6ea455aa401abe850e27a12abc124/test-image4.jpg"
+        }
+      },
+      {
+        "id": "285",
+        "content": "They tried and died.",
+        "upvotes": 10,
+        "downvotes": 7,
+        "user": {
+          "id": "35",
+          "username": "Ar-Sakalthôr",
+          "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBjQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ead6b14acd6ea455aa401abe850e27a12abc124/test-image4.jpg"
+        }
       }
-    }
-  ]
+    ]
+  }
 }

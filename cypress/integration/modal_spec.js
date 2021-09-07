@@ -1,12 +1,13 @@
-import { aliasPostsQuery } from '../utils/graphql-test-utils';
+import { aliasQuery } from '../utils/graphql-test-utils';
 
 describe('Modal Spec', () => {
   beforeEach(() => {
     cy.intercept(
       'POST',
       'https://hivemind-staging-branch.herokuapp.com/graphql',
-      (req) => {
-        aliasPostsQuery(req, 'posts');
+      req => {
+        aliasQuery(req, 'getPosts');
+        aliasQuery(req, 'getUser');
       }
     );
 

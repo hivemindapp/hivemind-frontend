@@ -43,3 +43,4 @@ describe('All posts view', () => {
   it('If it does not have an image, it should show the description', () => {
     cy.contains('My bees are swarming, what do I do?');
   });
+});

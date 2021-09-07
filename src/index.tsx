@@ -18,7 +18,7 @@ const client = new ApolloClient({
 });
 
 export const GET_ALL_POSTS = gql`
-  query {
+  query getPosts {
     posts {
       id
       title
@@ -37,7 +37,7 @@ export const GET_ALL_POSTS = gql`
 `;
 
 export const GET_USER = gql`
-  query {
+  query getUser {
     user(id: 23) {
       id
       username

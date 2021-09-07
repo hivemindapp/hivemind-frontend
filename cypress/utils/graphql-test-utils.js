@@ -1,16 +1,26 @@
 import mockPosts from '../fixtures/mockPosts.json';
+import mockUser from '../fixtures/mockUser.json';
 
 // Utility to match GraphQL mutation based on the operation name
 export const hasOperationName = (req, operationName) => {
   const { body } = req;
-  return body.hasOwnProperty('query') && body.query.includes(operationName);
+  return (
+    body.hasOwnProperty('operationName') && body.operationName === operationName
+  );
 };
 
-// Alias Posts query if operationName matches
-export const aliasPostsQuery = (req, operationName) => {
-  if (hasOperationName(req, operationName)) {
-    req.reply((res) => {
+// Alias queries
+export const aliasQuery = (req, operationName) => {
+  if (hasOperationName(req, operationName) && operationName === 'getPosts') {
+    req.alias = `gql${operationName}Query`;
+    req.reply(res => {
       res.body.data = mockPosts;
+    });
+  }
+  if (hasOperationName(req, 'getUser') && operationName === 'getUser') {
+    req.alias = `gql${operationName}Query`;
+    req.reply(res => {
+      res.body.data = mockUser;
     });
   }
 };

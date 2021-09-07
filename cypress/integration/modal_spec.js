@@ -5,13 +5,16 @@ describe('Modal Spec', () => {
     cy.intercept(
       'POST',
       'https://hivemind-staging-branch.herokuapp.com/graphql',
-      req => {
+      (req) => {
         aliasQuery(req, 'getPosts');
         aliasQuery(req, 'getUser');
       }
     );
 
     cy.visit('http://localhost:3000/').get('.add-post-button').click();
+    cy.wait('@gqlgetPostsQuery').then((interception) => {
+      expect(interception).to.be.an('object');
+    });
   });
 
   it('Should open a modal upon clicking Add a Post!', () => {
@@ -19,15 +22,15 @@ describe('Modal Spec', () => {
   });
 
   it('Should contain an input form for title', () => {
-    cy.get('.post-title').should('be.visible');
+    cy.get('.title-input').should('be.visible');
   });
 
   it('Should contain an input form for description', () => {
-    cy.get('.post-description').should('be.visible');
+    cy.get('.description-input').should('be.visible');
   });
 
   it('Should contain an input to add images', () => {
-    cy.get('.upload__image-wrapper').should('be.visible');
+    cy.get('.ImageUploader').should('be.visible');
   });
 
   it('Should contain an submit button', () => {
@@ -40,23 +43,22 @@ describe('Modal Spec', () => {
   });
 
   it('Should be able to submit a post with a title, description, and image', () => {
-    cy.get('.post-title')
+    cy.get('.title-input')
       .type('I love bees')
       .should('have.value', 'I love bees')
-      .get('.post-description')
+      .get('.description-input')
       .type('Bees are my only friends')
       .should('have.value', 'Bees are my only friends');
   });
 
-  // it('Should be able to submit a post without an image', () => {
-  //   cy.get('.post-title')
-  //     .type('I love bees')
-  //     .should('have.value', 'I love bees')
-  //     .get('.post-description')
-  //     .type('Bees are my only friends')
-  //     .should('have.value', 'Bees are my only friends')
-  //     .get('.post-submit-btn')
-  //     .click();
-  //   cy.get('.card').first().should('be.visible');
-  // });
+  it('Should be able to submit a post without an image', () => {
+    cy.get('.title-input')
+      .type('I love bees')
+      .should('have.value', 'I love bees')
+      .get('.description-input')
+      .type('Bees are my only friends')
+      .get('.post-submit-btn')
+      .click();
+    cy.get('.card').first().should('be.visible');
+  });
 });

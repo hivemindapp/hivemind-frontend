@@ -18,32 +18,32 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
   };
 
   return (
-    <div className='ImageUploader'>
+    <div className="ImageUploader">
       <ImageUploading
         multiple
         value={images}
         onChange={onChange}
         maxNumber={maxNumber}
-        dataURLKey='data_url'
+        dataURLKey="data_url"
         acceptType={['jpg', 'png', 'jpeg']}
         maxFileSize={1000000}
       >
         {({ imageList, onImageUpload, isDragging, dragProps, errors }) => (
-          <div className='upload-image-wrapper'>
+          <div className="upload-image-wrapper">
             {errors && (
               <div>
                 {errors.maxNumber && (
-                  <span className='error'>
-                    Number of selected images exceed maxNumber
+                  <span className="error">
+                    Number of selected images exceed maximum
                   </span>
                 )}
                 {errors.acceptType && (
-                  <span className='error'>
+                  <span className="error">
                     Your selected file type is not allowed
                   </span>
                 )}
                 {errors.maxFileSize && (
-                  <span className='error'>
+                  <span className="error">
                     Selected file size exceed maxFileSize
                   </span>
                 )}
@@ -51,7 +51,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             )}
             <button
               style={isDragging ? { backgroundColor: '#bfbfbf' } : undefined}
-              className='drag-button'
+              className="drag-button"
               onClick={onImageUpload}
               {...dragProps}
             >
@@ -61,8 +61,8 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             </button>
             &nbsp;
             {imageList.map((image, index) => (
-              <div key={index} className='image-item'>
-                <img src={image['data_url']} alt='upload preview' width='150' />
+              <div key={index} className="image-item">
+                <img src={image['data_url']} alt="upload preview" width="150" />
               </div>
             ))}
           </div>

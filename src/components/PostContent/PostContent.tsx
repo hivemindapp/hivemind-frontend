@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './PostContent.css';
 import { Details } from '../../utils/types';
 import { baseURL } from '../../index';
@@ -22,10 +23,14 @@ export const PostContent: React.FC<PostContentProps> = ({ details }) => {
   return (
     <>
       <section className="post-content">
+        <Link to="/" className="back-link">
+          <i className="fas fa-arrow-left"></i>
+          Back
+        </Link>
         <h2 className="post-content-title">{details.title}</h2>
         <PostedBy post={details} />
         <div className="description-wrapper">
-          <p>{details.description}</p>
+          <p className="post-content-description">{details.description}</p>
         </div>
         {!!details.imageUrls.length && renderImages(details.imageUrls)}
       </section>

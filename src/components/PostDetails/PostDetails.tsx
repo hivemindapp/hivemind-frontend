@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { GET_POST_DETAILS } from '../../index';
 import { useQuery } from '@apollo/client';
 import { Details } from '../../utils/types';
@@ -27,7 +28,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
       {error && <p>{error.message}</p>}
       {loading && <p>Loading post...</p>}
       {details && !loading && !error && (
-        <main className='post-details-section'>
+        <main className="post-details-section">
           <PostContent details={details} />
           <Comments comments={details.comments} />
         </main>

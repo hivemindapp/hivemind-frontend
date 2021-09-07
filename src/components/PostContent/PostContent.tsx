@@ -10,7 +10,7 @@ interface PostContentProps {
 
 export const PostContent: React.FC<PostContentProps> = ({ details }) => {
   const renderImages = (imageUrls: string[]) => {
-    return imageUrls.map(url => {
+    return imageUrls.map((url) => {
       return (
         <img
           src={`${baseURL}${url}`}
@@ -21,10 +21,10 @@ export const PostContent: React.FC<PostContentProps> = ({ details }) => {
   };
   return (
     <>
-      <section className='post-content'>
-        <h2>{details.title}</h2>
+      <section className="post-content">
+        <h2 className="post-content-title">{details.title}</h2>
         <PostedBy post={details} />
-        <div className='description-wrapper'>
+        <div className="description-wrapper">
           <p>{details.description}</p>
         </div>
         {!!details.imageUrls.length && renderImages(details.imageUrls)}

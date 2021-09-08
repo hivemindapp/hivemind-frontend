@@ -82,10 +82,14 @@ HiveMind is where beekeepers go to get advice, ask questions to the experts, and
 `npm start`  
 
 ## Wins and Challenges
-- TypeScript
-- GraphQL
-- GraphQL and Cypress Testing
-- Active Storage
+Our wins and challenges lined up for the most part, what began as a challenge painstakingly transformed into a win. We certainly bit off more than we could chew with several new technologies all at once. 
+
+TypeScript was new for one of our FrontEnders - and new-ish for the other. We encountered several tricky typescript errors that took several hours of debugging, but learned a lot in the process.
+
+GraphQL and Appollo were in and of themselves a fresh challenge, new for both the back end and the front end. As a team we definited and designed the exact queries we needed and incoporated them into your user interface. 
+
+But... we soon found that the two popular new techs on the block didn't place so nicely with each other. Stubbing and intercepting GraphQL with Cypress nearly polished us off. Documentation was sparse and stock overflow summaries were few and far between. With lots of assistance and experimentation, we managed to get a few queries stubbed. 
+
 
 ## Future Features
 

@@ -17,8 +17,6 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
   });
 
   useEffect(() => {
-    console.log(id);
-
     if (!loading && data) {
       setDetails(data.post);
     }
@@ -29,7 +27,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
       {error && <p>{error.message}</p>}
       {loading && <p>Loading post...</p>}
       {details && !loading && !error && (
-        <main className="post-details-section">
+        <main className='post-details-section'>
           <PostContent details={details} />
           <Comments comments={details.comments} />
         </main>

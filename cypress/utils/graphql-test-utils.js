@@ -1,6 +1,5 @@
 import mockPosts from '../fixtures/mockPosts.json';
 import mockUser from '../fixtures/mockUser.json';
-import mockPostDetails from '../fixtures/mockPostDetails.json';
 
 // Utility to match GraphQL mutation based on the operation name
 export const hasOperationName = (req, operationName) => {
@@ -14,24 +13,14 @@ export const hasOperationName = (req, operationName) => {
 export const aliasQuery = (req, operationName) => {
   if (hasOperationName(req, operationName) && operationName === 'getPosts') {
     req.alias = `gql${operationName}Query`;
-    req.reply((res) => {
+    req.reply(res => {
       res.body.data = mockPosts;
     });
   }
   if (hasOperationName(req, 'getUser') && operationName === 'getUser') {
     req.alias = `gql${operationName}Query`;
-    req.reply((res) => {
+    req.reply(res => {
       res.body.data = mockUser;
-    });
-  }
-  if (hasOperationName(req, 'post') && operationName === 'post') {
-    req.alias = `gql${operationName}Query`;
-    req.reply((res) => {
-      res.body = {
-        data: mockPostDetails
-      };
-      res.statusCode = 200;
-      console.log('response', res);
     });
   }
 };

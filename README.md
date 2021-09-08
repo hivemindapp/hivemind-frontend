@@ -4,10 +4,10 @@
 
 [![<ORG_NAME>](https://circleci.com/gh/hivemindapp/hivemind-frontend.svg?style=shield)](<LINK>)
 
-![view post details](https://user-images.githubusercontent.com/79113236/132573418-199fd108-743b-415a-a717-0edc8ba45702.gif)
+![view post details](https://user-images.githubusercontent.com/79113236/132574276-bc96caf8-67ca-4353-952d-2ff82a67ed49.gif)
 
-![add a post](https://user-images.githubusercontent.com/79113236/132572082-57aee67b-9e99-44f2-96d3-aa96f651a69b.gif)
+![add a post](https://user-images.githubusercontent.com/79113236/132574323-c40f0b51-f4ab-4a3f-b6ea-4037e40efb15.gif)
 
-![view post with comments](https://user-images.githubusercontent.com/79113236/132572115-15f7d4ed-4b9d-4291-8e78-3f8d5eddfe9c.gif)
+![view post with comments](https://user-images.githubusercontent.com/79113236/132574355-6b1325ca-0702-4369-b814-d99d143544dc.gif)
 
-![mobile walkthrough](https://user-images.githubusercontent.com/79113236/132572149-563d4d9a-0121-4348-b396-c5e1555f4b7b.gif)
+![mobile walkthrough](https://user-images.githubusercontent.com/79113236/132574407-1331a3d4-2f75-4781-a180-2ef0513dd675.gif)

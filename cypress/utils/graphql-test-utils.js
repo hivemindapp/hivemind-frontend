@@ -27,9 +27,11 @@ export const aliasQuery = (req, operationName) => {
   if (hasOperationName(req, 'post') && operationName === 'post') {
     req.alias = `gql${operationName}Query`;
     req.reply((res) => {
+      res.body = {
+        data: mockPostDetails
+      };
+      res.statusCode = 200;
       console.log('response', res);
-      console.log('request', req);
-      res.body = mockPostDetails;
     });
   }
 };

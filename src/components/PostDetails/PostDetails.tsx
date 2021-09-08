@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { GET_POST_DETAILS } from '../../index';
 import { useQuery } from '@apollo/client';
 import { Details } from '../../utils/types';
@@ -18,6 +17,8 @@ export const PostDetails: React.FC<PostDetailsProps> = ({ id }) => {
   });
 
   useEffect(() => {
+    console.log(id);
+
     if (!loading && data) {
       setDetails(data.post);
     }

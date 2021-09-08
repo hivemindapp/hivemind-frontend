@@ -12,13 +12,13 @@ export const PostedBy: React.FC<PostedByProps> = ({ post }) => {
   const { avatar, username } = post.user;
 
   return (
-    <div className='user-info'>
+    <div className="user-info">
       <img
-        className='avatar'
+        className="avatar"
         src={`${baseURL}${avatar}`}
         alt={`${username}'s avatar`}
       />
-      <p>
+      <p className="user-name">
         Posted by {username} {formatDateCreated(createdAt)}
       </p>
     </div>

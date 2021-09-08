@@ -54,7 +54,7 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
   useEffect(() => {
     if (data && !loading) {
       let newId = data.createDirectUpload.directUpload.signedBlobId;
-      setSignedIds(signedIds => [...signedIds, newId]);
+      setSignedIds((signedIds) => [...signedIds, newId]);
     }
   }, [data, loading]);
 
@@ -101,50 +101,51 @@ export const Modal: React.FC<ModalProps> = ({ closeModal, user }) => {
 
   return (
     <section
-      className='modal-wrapper'
-      id='modalWrapper'
+      className="modal-wrapper"
+      id="modalWrapper"
       onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) =>
         closeModal(event)
       }
     >
-      <section className='modal-content' id='modalContent'>
+      <section className="modal-content" id="modalContent">
         <i
-          className='fas fa-times close-modal'
-          id='x'
-          aria-label='close modal'
+          className="fas fa-times close-modal"
+          id="x"
+          aria-label="close modal"
           onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) =>
             closeModal(event)
           }
         ></i>
-        <h3 className='create-post'>Create Post</h3>
+        <h3 className="create-post">Create Post</h3>
         <textarea
-          className='title-input'
-          placeholder='Title'
+          className="title-input"
+          placeholder="Title"
           maxLength={100}
-          onChange={event => setTitle(event.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
           required
         />
-        <span className='error hidden' id='titleValidation'>
-          <i className='fas fa-exclamation-triangle error'></i>
+        <span className="error hidden" id="titleValidation">
+          <i className="fas fa-exclamation-triangle error"></i>
           <span>Please provide a title</span>
         </span>
         <textarea
+          className="description-input"
           placeholder="What's on your mind, busy bee?"
-          onChange={event => setDescription(event.target.value)}
+          onChange={(event) => setDescription(event.target.value)}
           required
         />
-        <span className='error hidden' id='descValidation'>
-          <i className='fas fa-exclamation-triangle error'></i>
+        <span className="error hidden" id="descValidation">
+          <i className="fas fa-exclamation-triangle error"></i>
           <span>Please provide a description</span>
         </span>
-        <p className='add-images-prompt'>
+        <p className="add-images-prompt">
           Add up to 3 images to your post, upload the nicest one first!
         </p>
         <ImageUploader newImage={newImage} images={images} />
         <input
-          type='submit'
-          id='submitButton'
-          className='post-submit-btn'
+          type="submit"
+          id="submitButton"
+          className="post-submit-btn"
           onClick={(event: React.MouseEvent<HTMLElement>) => addPost(event)}
         />
       </section>

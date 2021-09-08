@@ -5,18 +5,18 @@ describe('All posts view', () => {
     cy.intercept(
       'POST',
       'https://hivemind-staging-branch.herokuapp.com/graphql',
-      req => {
+      (req) => {
         aliasQuery(req, 'getPosts');
         aliasQuery(req, 'getUser');
       }
     );
 
     cy.visit('http://localhost:3000/');
-    cy.wait('@gqlgetPostsQuery').then(interception => {
+    cy.wait('@gqlgetPostsQuery').then((interception) => {
       expect(interception).to.be.an('object');
     });
 
-    cy.wait('@gqlgetUserQuery').then(interception => {
+    cy.wait('@gqlgetUserQuery').then((interception) => {
       expect(interception).to.be.an('object');
     });
   });

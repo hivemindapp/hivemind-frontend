@@ -11,6 +11,14 @@
   object-fit: contain;
 }
 
+.back-link {
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  font-size: 100%;
+  padding-top: 1em;
+}
+
 .description-wrapper {
   border-top: 1px solid black;
   margin-top: 1em;

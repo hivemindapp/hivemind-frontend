@@ -5,7 +5,7 @@
       "id": "1",
       "user": {
         "__typename": "user",
-        "id": 1,
+        "id": "1",
         "username": "BeeKeeper1",
         "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce5985ef004c3741b330ac5ed339bd7b9f5ea3a6/test-image3.jpg"
       },
@@ -24,7 +24,7 @@
       "id": "2",
       "user": {
         "__typename": "user",
-        "id": 1,
+        "id": "1",
         "username": "BeeKeeper1",
         "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce5985ef004c3741b330ac5ed339bd7b9f5ea3a6/test-image3.jpg"
       },
@@ -42,7 +42,7 @@
       "id": "3",
       "user": {
         "__typename": "user",
-        "id": 2,
+        "id": "2",
         "username": "BeeNoob2",
         "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce5985ef004c3741b330ac5ed339bd7b9f5ea3a6/test-image3.jpg"
       },

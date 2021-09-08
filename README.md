@@ -4,7 +4,7 @@
 
 [![<ORG_NAME>](https://circleci.com/gh/hivemindapp/hivemind-frontend.svg?style=shield)](<LINK>)
 
-![view post details](https://user-images.githubusercontent.com/79113236/132573122-835454f9-908a-4ccb-bcdd-ce5c5d2c034e.gif)
+![view post details](https://user-images.githubusercontent.com/79113236/132573418-199fd108-743b-415a-a717-0edc8ba45702.gif)
 
 ![add a post](https://user-images.githubusercontent.com/79113236/132572082-57aee67b-9e99-44f2-96d3-aa96f651a69b.gif)
 
